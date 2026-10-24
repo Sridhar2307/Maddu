@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: dakshin_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dakshin
+      POSTGRES_PASSWORD: dakshin_secure_password
+      POSTGRES_DB: dakshin_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dakshin -d dakshin_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    container_name: dakshin_api
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DATABASE_URL: postgres://dakshin:dakshin_secure_password@postgres:5432/dakshin_db?schema=public
+      JWT_ACCESS_SECRET: dakshin_jwt_super_access_secret_key_prod_2026
+      JWT_REFRESH_SECRET: dakshin_jwt_super_refresh_secret_key_prod_2026
+      WEB_ORIGIN: http://localhost:3000
+      HELPLINE_NUMBER: "1800-425-76884"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    container_name: dakshin_web
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
