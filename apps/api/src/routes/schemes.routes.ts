@@ -151,7 +151,7 @@ schemesRouter.get("/user/my-applications", authenticate, async (req: Request, re
 
     return res.json({
       count: applications.length,
-      applications: applications.map((a) => ({
+      applications: applications.map((a: any) => ({
         id: a.id,
         applicationRef: `DAH-SCH-${new Date(a.createdAt).getFullYear()}-${a.id.slice(0, 6).toUpperCase()}`,
         scheme: a.scheme,

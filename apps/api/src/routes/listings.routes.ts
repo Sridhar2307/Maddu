@@ -103,7 +103,7 @@ listingsRouter.get("/", optionalAuth, async (req: Request, res: Response, next: 
     ]);
 
     // Format safe response with phone numbers MASKED
-    const safeListings = items.map((item) => ({
+    const safeListings = items.map((item: any) => ({
       id: item.id,
       title: item.title,
       category: item.category,
@@ -125,7 +125,7 @@ listingsRouter.get("/", optionalAuth, async (req: Request, res: Response, next: 
       status: item.status,
       viewCount: item.viewCount,
       createdAt: item.createdAt,
-      images: item.images.map((img) => img.url),
+      images: item.images.map((img: any) => img.url),
       imageUrl: item.images[0]?.url || "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
       vaccinations: item.vaccinations,
       seller: {
@@ -214,7 +214,7 @@ listingsRouter.get("/:id", optionalAuth, async (req: Request, res: Response, nex
         status: listing.status,
         viewCount: listing.viewCount + 1,
         createdAt: listing.createdAt,
-        images: listing.images.map((img) => img.url),
+        images: listing.images.map((img: any) => img.url),
         imageUrl: listing.images[0]?.url || "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
         vaccinations: listing.vaccinations,
         seller: {

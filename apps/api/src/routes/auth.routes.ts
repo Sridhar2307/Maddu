@@ -102,7 +102,7 @@ authRouter.post("/otp/verify", async (req: Request, res: Response, next: NextFun
       });
     }
 
-    const roles = user.roles.split(",").map((r) => r.trim());
+    const roles = user.roles.split(",").map((r: any) => r.trim());
     const accessToken = generateAccessToken({
       userId: user.id,
       phone: user.phone,
@@ -130,7 +130,7 @@ authRouter.post("/otp/verify", async (req: Request, res: Response, next: NextFun
         id: refreshedUser!.id,
         phone: refreshedUser!.phone,
         name: refreshedUser!.name,
-        roles: refreshedUser!.roles.split(",").map((r) => r.trim()),
+        roles: refreshedUser!.roles.split(",").map((r: any) => r.trim()),
         state: refreshedUser!.state,
         district: refreshedUser!.district,
         language: refreshedUser!.language,
@@ -242,7 +242,7 @@ authRouter.get("/me", authenticate, async (req: Request, res: Response, next: Ne
         id: user.id,
         phone: user.phone,
         name: user.name,
-        roles: user.roles.split(",").map((r) => r.trim()),
+        roles: user.roles.split(",").map((r: any) => r.trim()),
         state: user.state,
         district: user.district,
         language: user.language,
@@ -274,7 +274,7 @@ authRouter.patch("/me", authenticate, async (req: Request, res: Response, next: 
         id: updated.id,
         phone: updated.phone,
         name: updated.name,
-        roles: updated.roles.split(",").map((r) => r.trim()),
+        roles: updated.roles.split(",").map((r: any) => r.trim()),
         state: updated.state,
         district: updated.district,
         language: updated.language,

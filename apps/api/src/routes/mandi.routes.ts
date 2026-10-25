@@ -27,7 +27,7 @@ mandiRouter.get("/rates", async (req: Request, res: Response, next: NextFunction
     const now = Date.now();
     const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
-    const formatted = rates.map((r) => {
+    const formatted = rates.map((r: any) => {
       const isStale = now - new Date(r.fetchedAt).getTime() > ONE_DAY_MS;
       return {
         id: r.id,

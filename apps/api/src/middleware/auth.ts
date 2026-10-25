@@ -61,7 +61,7 @@ export async function authenticate(req: Request, res: Response, next: NextFuncti
     req.user = {
       id: user.id,
       phone: user.phone,
-      roles: user.roles.split(",").map((r) => r.trim()),
+      roles: user.roles.split(",").map((r: any) => r.trim()),
       isBanned: user.isBanned,
       sellerProfile: user.sellerProfile,
     };
@@ -105,7 +105,7 @@ export async function optionalAuth(req: Request, res: Response, next: NextFuncti
       req.user = {
         id: user.id,
         phone: user.phone,
-        roles: user.roles.split(",").map((r) => r.trim()),
+        roles: user.roles.split(",").map((r: any) => r.trim()),
         isBanned: user.isBanned,
         sellerProfile: user.sellerProfile,
       };

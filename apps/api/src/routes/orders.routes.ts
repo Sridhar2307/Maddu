@@ -63,7 +63,7 @@ ordersRouter.post("/", authenticate, async (req: Request, res: Response, next: N
     }
 
     // Atomic transaction to create order and initial timeline event
-    const newOrder = await prisma.$transaction(async (tx) => {
+    const newOrder = await prisma.$transaction(async (tx: any) => {
       const order = await tx.order.create({
         data: {
           listingId: listing.id,
@@ -178,7 +178,7 @@ ordersRouter.post("/payments/webhook", async (req: Request, res: Response, next:
     }
 
     // Process payment atomically
-    await prisma.$transaction(async (tx) => {
+    await prisma.$transaction(async (tx: any) => {
       await tx.order.update({
         where: { id: order.id },
         data: {

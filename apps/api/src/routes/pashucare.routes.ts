@@ -182,7 +182,7 @@ pashucareRouter.get("/vet-requests", authenticate, async (req: Request, res: Res
       },
     });
 
-    const parsed = requests.map((r) => ({
+    const parsed = requests.map((r: any) => ({
       ...r,
       photoUrls: JSON.parse(r.photoUrls || "[]"),
     }));
