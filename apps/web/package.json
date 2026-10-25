@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000 --host",
-    "build": "vite build",
+    "build": "npm --prefix ../../ run --workspace=@dakshin/shared build && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

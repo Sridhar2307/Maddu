@@ -88,3 +88,6 @@ app.use("/api/v1/schemes", schemesRouter);
 
 // Centralized Error Handler Middleware
 app.use(errorHandler);
+
+export default app;
+
