@@ -3,6 +3,11 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "apps/web/dist",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "apps/api/dist/**"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
