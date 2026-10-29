@@ -1,16 +1,17 @@
 {
-  "name": "dakshin-agrihub-monorepo",
+  "name": "dakshin-agrihub",
   "private": true,
+  "version": "2.0.0",
   "type": "module",
   "workspaces": [
     "packages/*",
     "apps/*"
   ],
   "scripts": {
-    "dev": "concurrently -k -n \"api,web\" -c \"blue,green\" \"npm --workspace=@dakshin/api run dev\" \"npm --workspace=@dakshin/web run dev\"",
-    "dev:api": "npm --workspace=@dakshin/api run dev",
-    "dev:web": "npm --workspace=@dakshin/web run dev",
-    "build": "npm run --workspaces build",
+    "dev": "cd maddu-new && npm run dev",
+    "build": "cd maddu-new && npm install && npm run build",
+    "preview": "cd maddu-new && npm run preview",
+    "dev:monorepo": "concurrently -k -n \"api,web\" -c \"blue,green\" \"npm --workspace=@dakshin/api run dev\" \"npm --workspace=@dakshin/web run dev\"",
     "test": "npm --workspace=@dakshin/api test",
     "prisma:generate": "npm --workspace=@dakshin/api run prisma:generate",
     "prisma:push": "npm --workspace=@dakshin/api run prisma:push",

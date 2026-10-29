@@ -1,27 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "api": {
-      "root": "apps/api",
-      "framework": "express"
-    },
-    "web": {
-      "root": "apps/web",
-      "framework": "vite"
-    }
-  },
+  "buildCommand": "cd maddu-new && npm install && npm run build",
+  "outputDirectory": "maddu-new/dist",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": {
-        "service": "api"
-      }
-    },
-    {
       "source": "/(.*)",
-      "destination": {
-        "service": "web"
-      }
+      "destination": "/index.html"
     }
   ]
 }
