@@ -1,0 +1,11 @@
+{
+  "name": "dakshin-agrihub",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd maddu-new && npm run dev",
+    "build": "cd maddu-new && npm install && npm run build",
+    "preview": "cd maddu-new && npm run preview"
+  }
+}
