@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "dev": "cd maddu-new && npm run dev",
-    "build": "cd maddu-new && npm install && npm run build",
+    "build": "node build.cjs",
     "preview": "cd maddu-new && npm run preview",
     "dev:monorepo": "concurrently -k -n \"api,web\" -c \"blue,green\" \"npm --workspace=@dakshin/api run dev\" \"npm --workspace=@dakshin/web run dev\"",
     "test": "npm --workspace=@dakshin/api test",
