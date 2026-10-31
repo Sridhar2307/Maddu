@@ -15,3 +15,4 @@ if (fs.existsSync('maddu-new')) {
   execSync('npx vite build', { stdio: 'inherit' });
   console.log('✓ Successfully built dist');
 }
+

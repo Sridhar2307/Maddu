@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SIH 2026 Slide 3 - Diagram Downloader</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #0f172a; color: #f8fafc; padding: 30px; }
+    h1 { text-align: center; font-size: 1.8rem; margin-bottom: 8px; color: #38bdf8; }
+    p.sub { text-align: center; color: #94a3b8; margin-bottom: 25px; font-size: 0.95rem; }
+    
+    .actions-bar { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+    .btn { background: #0284c7; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .btn:hover { background: #0369a1; transform: translateY(-1px); }
+    .btn-green { background: #16a34a; }
+    .btn-green:hover { background: #15803d; }
+
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 12px; margin-bottom: 20px; }
+    .card-title { font-size: 1.15rem; font-weight: 700; color: #38bdf8; }
+    .badge { background: #0369a1; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 600; }
+    .placement { background: #0f172a; border-left: 4px solid #38bdf8; padding: 10px 14px; margin-bottom: 15px; font-size: 0.88rem; color: #cbd5e1; }
+    
+    .mermaid-container { background: #ffffff; border-radius: 8px; padding: 24px; display: flex; justify-content: center; overflow-x: auto; min-height: 150px; }
+    .card-footer { display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px; }
+    .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
+  </style>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        primaryColor: '#e0f2fe',
+        primaryTextColor: '#0369a1',
+        primaryBorderColor: '#0284c7',
+        lineColor: '#0284c7',
+        secondaryColor: '#f0fdf4',
+        tertiaryColor: '#fef3c7'
+      }
+    });
+
+    function downloadSvg(containerId, filename) {
+      const container = document.getElementById(containerId);
+      const svg = container.querySelector('svg');
+      if (!svg) return alert('Diagram is still rendering, please wait a moment.');
+      const serializer = new XMLSerializer();
+      const svgBlob = new Blob([serializer.serializeToString(svg)], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(svgBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename + '.svg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function downloadPng(containerId, filename) {
+      const container = document.getElementById(containerId);
+      const svg = container.querySelector('svg');
+      if (!svg) return alert('Diagram is still rendering, please wait a moment.');
+      
+      const svgData = new XMLSerializer().serializeToString(svg);
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      const svgSize = svg.getBoundingClientRect();
+      const scale = 2; // High-res 2x
+      canvas.width = (svgSize.width || 800) * scale;
+      canvas.height = (svgSize.height || 400) * scale;
+
+      img.onload = function() {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const pngUrl = canvas.toDataURL('image/png');
+        const a = document.createElement('a');
+        a.href = pngUrl;
+        a.download = filename + '.png';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+
+      img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+    }
+
+    function downloadAllPng() {
+      const list = [
+        { id: 'c1', name: 'diagram1_top_banner' },
+        { id: 'c2', name: 'diagram2_vertical_architecture' },
+        { id: 'c3', name: 'diagram3_ai_engine_specs' },
+        { id: 'c4', name: 'diagram4_pipeline_latency' },
+        { id: 'c5', name: 'diagram5_all_in_one' }
+      ];
+      list.forEach((item, idx) => {
+        setTimeout(() => downloadPng(item.id, item.name), idx * 400);
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <h1>🌾 DakshinAgriHub — SIH 2026 Slide 3 Diagram Downloader</h1>
+  <p class="sub">All 5 diagrams rendered. Click the buttons below to download High-Resolution PNG or Vector SVG files.</p>
+
+  <div class="actions-bar">
+    <button class="btn btn-green" onclick="downloadAllPng()">⚡ Download All 5 Diagrams as High-Res PNG</button>
+  </div>
+
+  <!-- DIAGRAM 1 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">1. TOP BANNER: DATA & REGIONAL SCALE</span>
+      <span class="badge">Placement: Top Center Span</span>
+    </div>
+    <div class="placement"><strong>Slide Location:</strong> Across the top center, right below the title "TECHNICAL APPROACH".</div>
+    <div class="mermaid-container" id="c1">
+      <div class="mermaid">
+        flowchart LR
+          s1["5 SOUTHERN STATES & 3 UTs<br/><b>Coverage: TN, AP, TG, KA, KL, PY, AN, LD</b>"] ==> s2["3.8+ CRORE LIVESTOCK<br/><b>Census Population Covered</b>"]
+          s2 ==> s3["150+ APMC MANDIS<br/><b>Daily Agmarknet Price Sync</b>"]
+          s3 ==> s4["6 REGIONAL LANGUAGES<br/><b>Tamil, Telugu, Kannada, Mal, Hin, Eng</b>"]
+          s4 ==> s5["283-DAY GESTATION CYCLE<br/><b>Estrus to Calving Health Alerts</b>"]
+          
+          style s1 fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+          style s2 fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,color:#15803d
+          style s3 fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#b45309
+          style s4 fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#7e22ce
+          style s5 fill:#ffe4e6,stroke:#e11d48,stroke-width:2px,color:#be123c
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-green" onclick="downloadPng('c1', 'diagram1_top_banner')">📥 Download PNG</button>
+      <button class="btn btn-sm" onclick="downloadSvg('c1', 'diagram1_top_banner')">📐 Download SVG</button>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 2 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">2. LEFT VERTICAL FLOWCHART: END-TO-END ARCHITECTURE</span>
+      <span class="badge">Placement: Far Left Column (Full Height)</span>
+    </div>
+    <div class="placement"><strong>Slide Location:</strong> Left-hand column running vertically from top to bottom.</div>
+    <div class="mermaid-container" id="c2">
+      <div class="mermaid">
+        flowchart TD
+          in["1. INPUT & TELEMETRY<br/>• Farmer Cattle & Fodder Listings<br/>• INAPH 12-Digit Ear-Tags<br/>• Daily Agmarknet Mandi Feeds<br/>• Tele-Vet Consultation Requests"]
+          c1(["⚡ Real-Time REST & Scheduled Cron"])
+          eng["2. INTELLIGENCE ENGINE<br/>• Shaeffer's Biometric Weight AI<br/>• 283-Day Gestation Countdown<br/>• Haversine Dynamic Freight Router"]
+          c2(["🛡️ Tamper-Proof Verification"])
+          escrow["3. PASHUSAFE ESCROW LAYER<br/>• Concurrency Guard: 409 Anti-Double Selling<br/>• Anti-Scraping Phone Masking<br/>• Dynamic PDFKit QR Passport Generator"]
+          c3(["📱 Ear-Tag QR Scanned on Delivery"])
+          hub["4. ACTION HUB & MULTI-PORTAL<br/>• 4 Portals: Buyer, Seller, Vet, Admin<br/>• 6-Language Vernacular Voice AI<br/>• Automated SMS & WhatsApp Alerts"]
+
+          in --> c1 --> eng --> c2 --> escrow --> c3 --> hub
+
+          style in fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a
+          style c1 fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#15803d
+          style eng fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0369a1
+          style c2 fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#15803d
+          style escrow fill:#fef3c7,stroke:#d97706,stroke-width:2px,color:#b45309
+          style c3 fill:#dcfce7,stroke:#16a34a,stroke-width:1.5px,color:#15803d
+          style hub fill:#f3e8ff,stroke:#9333ea,stroke-width:2px,color:#7e22ce
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-green" onclick="downloadPng('c2', 'diagram2_vertical_architecture')">📥 Download PNG</button>
+      <button class="btn btn-sm" onclick="downloadSvg('c2', 'diagram2_vertical_architecture')">📐 Download SVG</button>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 3 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">3. CENTER BLOCK 1: AI & ENGINE SPECIFICATIONS</span>
+      <span class="badge">Placement: Center Column Upper Half</span>
+    </div>
+    <div class="placement"><strong>Slide Location:</strong> Middle section below top banner, left of tech stack table.</div>
+    <div class="mermaid-container" id="c3">
+      <div class="mermaid">
+        flowchart TD
+          root["AI and Engine Specifications"]
+          c1["Biometric Weight AI<br/><b>Shaeffer's Formula</b><br/>Girth² × Length / 10800<br/>Prevents Broker Fraud"]
+          c2["PashuSafe Escrow<br/><b>Finite State Machine</b><br/>Held → Dispatched → Delivered<br/>Locked Until QR Tag Scan"]
+          c3["Vayal Voice Assistant<br/><b>Web Speech + Dialect</b><br/>6 Indic Native Languages<br/>Built for Low-Literacy"]
+          c4["Haversine Logistics<br/><b>Multi-Modal Router</b><br/>Pickup, 6-Wheel & Ferry<br/>Zero Deadhead Mileage"]
+
+          root --> c1
+          root --> c2
+          root --> c3
+          root --> c4
+
+          style root fill:#0284c7,stroke:#0369a1,stroke-width:2px,color:#ffffff
+          style c1 fill:#f0fdf4,stroke:#16a34a,stroke-width:1.5px,color:#15803d
+          style c2 fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#b45309
+          style c3 fill:#f3e8ff,stroke:#9333ea,stroke-width:1.5px,color:#7e22ce
+          style c4 fill:#e0f2fe,stroke:#0284c7,stroke-width:1.5px,color:#0369a1
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-green" onclick="downloadPng('c3', 'diagram3_ai_engine_specs')">📥 Download PNG</button>
+      <button class="btn btn-sm" onclick="downloadSvg('c3', 'diagram3_ai_engine_specs')">📐 Download SVG</button>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">4. CENTER BLOCK 2: PIPELINE LATENCY STEPPER</span>
+      <span class="badge">Placement: Center Column Lower Half</span>
+    </div>
+    <div class="placement"><strong>Slide Location:</strong> Directly under the AI engine specifications tree.</div>
+    <div class="mermaid-container" id="c4">
+      <div class="mermaid">
+        flowchart LR
+          p1["1. Listing & Biometrics<br/><b>Latency: < 1 sec</b>"] --> p2["2. Passport & QR Gen<br/><b>Latency: < 500 ms</b>"]
+          p2 --> p3["3. Mandi Price Sync<br/><b>Hourly Cron (< 2 min)</b>"]
+          p3 --> p4["4. Escrow Webhook<br/><b>Instant Callback</b>"]
+          p4 --> p5["5. Total Page Latency<br/><b>Sub-second (< 800 ms)</b>"]
+
+          style p1 fill:#e0f2fe,stroke:#0284c7,stroke-width:1.5px,color:#0369a1
+          style p2 fill:#f0fdf4,stroke:#16a34a,stroke-width:1.5px,color:#15803d
+          style p3 fill:#fef3c7,stroke:#d97706,stroke-width:1.5px,color:#b45309
+          style p4 fill:#f3e8ff,stroke:#9333ea,stroke-width:1.5px,color:#7e22ce
+          style p5 fill:#dcfce7,stroke:#15803d,stroke-width:2px,color:#15803d
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-green" onclick="downloadPng('c4', 'diagram4_pipeline_latency')">📥 Download PNG</button>
+      <button class="btn btn-sm" onclick="downloadSvg('c4', 'diagram4_pipeline_latency')">📐 Download SVG</button>
+    </div>
+  </div>
+
+  <!-- DIAGRAM 5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">5. ALL-IN-ONE FULL ARCHITECTURE DIAGRAM</span>
+      <span class="badge">Full Slide Alternative</span>
+    </div>
+    <div class="placement"><strong>Slide Location:</strong> Full slide view combining scale, architecture, engines, and latency.</div>
+    <div class="mermaid-container" id="c5">
+      <div class="mermaid">
+        flowchart TD
+          subgraph SCALE["REGIONAL DATA SCALE & COVERAGE"]
+              direction LR
+              s1["5 SOUTHERN STATES & 3 UTs"] ==> s2["3.8+ CRORE LIVESTOCK"] ==> s3["150+ APMC MANDIS"] ==> s4["6 REGIONAL LANGUAGES"] ==> s5["283-DAY CARE CYCLE"]
+          end
+
+          subgraph ARCH["END-TO-END WORKFLOW"]
+              direction TB
+              in["1. INPUT: Cattle, Fodder & INAPH Tags"] --> sync(["Real-Time REST & Scheduled Cron"])
+              sync --> eng["2. ENGINE: Biometric AI & Gestation"]
+              eng --> verify(["Tamper-Proof Verification"])
+              verify --> escrow["3. ESCROW: PashuSafe & QR Passport"]
+              escrow --> scan(["Ear-Tag Scanned on Delivery"])
+              scan --> hub["4. ACTION HUB: 4 Portals & Voice AI"]
+          end
+
+          subgraph ENGINES["AI & ENGINE SPECIFICATIONS"]
+              direction LR
+              c1["Shaeffer's Formula<br/>Girth² × Length / 10800"]
+              c2["PashuSafe Escrow<br/>Held → Dispatched → Delivered"]
+              c3["Vayal Voice Assistant<br/>6 Indic Languages"]
+              c4["Haversine Logistics<br/>Zero-Waste Fodder Router"]
+          end
+
+          subgraph LATENCY["PIPELINE PERFORMANCE"]
+              direction LR
+              p1["Listing < 1s"] --> p2["Passport < 500ms"] --> p3["Mandi Cron < 2m"] --> p4["Escrow Instant"] --> p5["Total Latency < 800ms"]
+          end
+
+          SCALE --> ARCH
+          ARCH --> ENGINES
+          ENGINES --> LATENCY
+
+          style SCALE fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px
+          style ARCH fill:#fafaf9,stroke:#78716c,stroke-width:1.5px
+          style ENGINES fill:#f5f3ff,stroke:#7c3aed,stroke-width:1.5px
+          style LATENCY fill:#f0fdf4,stroke:#16a34a,stroke-width:1.5px
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-green" onclick="downloadPng('c5', 'diagram5_all_in_one')">📥 Download PNG</button>
+      <button class="btn btn-sm" onclick="downloadSvg('c5', 'diagram5_all_in_one')">📐 Download SVG</button>
+    </div>
+  </div>
+
+</body>
+</html>
