@@ -138,7 +138,7 @@ def create_listing(payload: schemas.ListingCreate, db: Session = Depends(get_db)
         pregnancy_status=payload.pregnancy_status,
         ear_tag_id=payload.ear_tag_id,
         estimated_weight=payload.estimated_weight,
-        image_url=payload.image_url or "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80"
+        image_url=payload.image_url or "/images/kangayam_cow.jpg"
     )
     db.add(new_listing)
     db.commit()

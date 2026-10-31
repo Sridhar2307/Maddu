@@ -542,34 +542,101 @@
 
   <!-- MODAL: Tele-Vet & Veterinary Visit Booking -->
   <div class="modal-overlay" id="vet-modal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h3 id="lbl-vet-modal-title">Register Veterinary Visit / Consultation Request</h3>
-        <button class="modal-close-btn" id="close-vet-modal">&times;</button>
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #042417 0%, #0f4f34 100%); color: #fff;">
+        <h3 id="lbl-vet-modal-title" style="color: #fef08a; display: flex; align-items: center; gap: 8px;">
+          <span>🩺</span> Book Appointment with Dr. Radhakrishnan (Vet)
+        </h3>
+        <button class="modal-close-btn" id="close-vet-modal" style="color: #fff;">&times;</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="padding: 20px;">
         <form id="vet-request-form" style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Farmer / Customer Name</label>
+              <input type="text" id="vet-customer-name" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="Your Name (e.g. Anand Murthy)" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Contact Mobile Phone</label>
+              <input type="tel" id="vet-phone" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="+91 98421 XXXXX" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Farm Location / District</label>
+              <input type="text" id="vet-district" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="e.g. Erode, Tamil Nadu" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Consultation Mode</label>
+              <select id="vet-mode" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px; border-radius: 8px;">
+                <option value="Tele-Vet Video Call">📹 Tele-Vet Live Video Call</option>
+                <option value="On-Farm Visit">🏡 On-Farm Shed Visit</option>
+                <option value="Phone Audio Consultation">📞 Phone Audio Consultation</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Species / Animal Type</label>
+              <select id="vet-species" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px; border-radius: 8px;">
+                <option value="Indigenous Cow / Cattle">Indigenous Cow / Cattle</option>
+                <option value="Murrah / Native Buffalo">Murrah / Native Buffalo</option>
+                <option value="Goat (Malabari / Tellicherry / Boer)">Goat (Malabari / Tellicherry / Boer)</option>
+                <option value="Sheep (Mecheri / Nilgiri)">Sheep (Mecheri / Nilgiri)</option>
+                <option value="Poultry (Backyard / Asil / Nicobari)">Poultry (Backyard / Asil / Nicobari)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Govt Ear-Tag (Optional)</label>
+              <input type="text" id="vet-ear-tag" class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="e.g. TN-3304-9812-4410" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Preferred Appointment Date</label>
+              <input type="date" id="vet-date" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Preferred Time Slot</label>
+              <select id="vet-slot" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px; border-radius: 8px;">
+                <option value="10:00 AM - 11:30 AM">Morning (10:00 AM - 11:30 AM)</option>
+                <option value="02:00 PM - 03:30 PM">Afternoon (02:00 PM - 03:30 PM)</option>
+                <option value="05:00 PM - 06:30 PM">Evening (05:00 PM - 06:30 PM)</option>
+              </select>
+            </div>
+          </div>
+
           <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Species / Animal Type</label>
-            <select id="vet-species" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px;">
-              <option value="COW">Indigenous Cow / Cattle</option>
-              <option value="BUFFALO">Murrah / Native Buffalo</option>
-              <option value="GOAT">Goat (Malabari / Tellicherry / Boer)</option>
-              <option value="SHEEP">Sheep (Mecheri / Nilgiri)</option>
-              <option value="POULTRY">Indigenous Poultry / Backyard Fowl</option>
-            </select>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Observed Symptoms &amp; Consultation Reason</label>
+            <textarea id="vet-symptoms" required rows="3" class="search-input" style="border-radius: 8px; margin-top: 4px; resize: vertical;" placeholder="Describe illness symptoms, duration, gestation status, feed intake changes..."></textarea>
           </div>
-          <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Observed Symptoms & Medical History</label>
-            <textarea id="vet-symptoms" required rows="3" class="search-input" style="border-radius: 8px; margin-top: 4px; resize: vertical;" placeholder="Describe symptoms, duration, temperature, feed intake changes..."></textarea>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; font-size: 0.78rem; color: #166534; line-height: 1.4;">
+            🛡️ <strong>Direct Doctor Dispatch:</strong> Your appointment request is logged directly into Dr. Radhakrishnan's clinical consultation queue and assigned an instant reference ID.
           </div>
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; font-size: 0.78rem; color: #166534;">
-            🛡️ Your consultation ticket is logged into the Southern State Animal Husbandry Emergency Coordination Desk.
-          </div>
-          <button type="submit" class="btn-directions" style="padding: 12px; font-size: 0.95rem;">
-            Submit Emergency Ticket & Connect Vet
+
+          <button type="submit" class="btn-directions" style="padding: 13px; font-size: 0.95rem; background: #047857; font-weight: 800;">
+            ✓ Confirm &amp; Book Veterinary Appointment
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Tele-Vet Live Video Call Simulation -->
+  <div class="modal-overlay" id="tele-vet-video-modal">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #0f766e 0%, #047857 100%); color: #fff;">
+        <h3 id="lbl-video-call-title" style="color: #fff; display: flex; align-items: center; gap: 8px;">
+          <span>📹</span> Live Tele-Vet Encrypted Video Consultation
+        </h3>
+        <button class="modal-close-btn" id="close-tele-vet-video-modal" style="color: #fff;">&times;</button>
+      </div>
+      <div class="modal-body" id="tele-vet-video-modal-body" style="padding: 20px;">
+        <!-- Rendered dynamically -->
       </div>
     </div>
   </div>
@@ -615,6 +682,58 @@
             Activate Daily Price Alert
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PashuSafe Pay Fund Locker -->
+  <div class="modal-overlay" id="pashusafe-pay-modal">
+    <div class="modal-dialog" style="max-width: 640px;">
+      <div class="modal-header">
+        <h3>🛡️ PashuSafe Pay — Escrow Fund Locker</h3>
+        <button class="modal-close-btn" id="close-pashusafe-pay-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="pashusafe-pay-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Live Package & Transit Tracker -->
+  <div class="modal-overlay" id="tracker-modal">
+    <div class="modal-dialog" style="max-width: 740px;">
+      <div class="modal-header">
+        <h3>🚚 Live Livestock Transit & Package Tracker</h3>
+        <button class="modal-close-btn" id="close-tracker-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="tracker-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Biometric Ear-Tag & Health Check Scanner -->
+  <div class="modal-overlay" id="scanner-modal">
+    <div class="modal-dialog" style="max-width: 700px;">
+      <div class="modal-header">
+        <h3>🔍 Biometric Ear-Tag & Physical Health Scanner</h3>
+        <button class="modal-close-btn" id="close-scanner-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="scanner-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PashuSafe Escrow Release Receipt -->
+  <div class="modal-overlay" id="receipt-modal">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #065f46 0%, #047857 100%);">
+        <h3>🧾 PashuSafe Escrow Release & Settlement Receipt</h3>
+        <button class="modal-close-btn" id="close-receipt-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="receipt-modal-body">
+        <!-- Rendered dynamically -->
       </div>
     </div>
   </div>

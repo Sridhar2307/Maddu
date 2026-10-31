@@ -41,7 +41,7 @@ class Listing(Base):
     ear_tag_id = Column(String, nullable=True, default="N/A")
     ear_tag_verified = Column(Boolean, default=True)
     estimated_weight = Column(Integer, default=350)
-    image_url = Column(Text, default="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80")
+    image_url = Column(Text, default="/images/kangayam_cow.jpg")
     status = Column(String, default="ACTIVE")  # ACTIVE, SOLD, PAUSED
 
     # Extended specifications for Fodder and Machinery Rental

@@ -43,7 +43,7 @@ def seed():
             ear_tag_id="TN-3304-9812-4410",
             ear_tag_verified=True,
             estimated_weight=360,
-            image_url="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80"
+            image_url="/images/kangayam_cow.jpg"
         ),
         models.Listing(
             id="pashu-102",
@@ -60,7 +60,7 @@ def seed():
             ear_tag_id="AP-2801-7104-9923",
             ear_tag_verified=True,
             estimated_weight=520,
-            image_url="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=800&q=80"
+            image_url="/images/ongole_bull.jpg"
         ),
         models.Listing(
             id="pashu-103",
@@ -77,7 +77,7 @@ def seed():
             ear_tag_id="KA-4102-5509-1123",
             ear_tag_verified=True,
             estimated_weight=440,
-            image_url="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80"
+            image_url="/images/hallikar_bulls.jpg"
         )
     ]
     for l in listings:

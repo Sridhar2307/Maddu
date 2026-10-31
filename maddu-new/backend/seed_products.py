@@ -22,7 +22,7 @@ items_to_seed = [
         available_qty="25 Tonnes",
         moisture="75%",
         protein="10.5% Crude Protein",
-        image_url="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/napier_grass.jpg",
         delivery_info="Truck delivery across TN, Puducherry & Chittoor within 24h",
         description="Fresh harvested CO-4 Napier grass cut at 45 days for optimal protein and palatability."
     ),
@@ -42,7 +42,7 @@ items_to_seed = [
         available_qty="2,000 Bales",
         moisture="12% (Rain Protected)",
         protein="4.2% Crude Protein",
-        image_url="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/paddy_straw_bales.jpg",
         delivery_info="Direct transit to drought-hit Rayalaseema & North Karnataka",
         description="Tight machine-compressed paddy straw bales with low silica and high dry matter retention."
     ),
@@ -62,7 +62,7 @@ items_to_seed = [
         available_qty="400 Bags (20 Tonnes)",
         moisture="65%",
         protein="9.2% CP + High Starch",
-        image_url="https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/corn_silage.jpg",
         delivery_info="Ships anywhere in KA, KL, and TN",
         description="High-energy anaerobic fermented corn silage with cob grains included for improved milk fat."
     ),
@@ -82,7 +82,7 @@ items_to_seed = [
         available_qty="10 Tonnes",
         moisture="8%",
         protein="42% High Bypass Protein",
-        image_url="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/groundnut_cake.jpg",
         delivery_info="Daily supply to Kerala dairy co-operatives and Kongu farms",
         description="Expeller processed peanut cake rich in amino acids and bypass protein for lactating animals."
     ),
@@ -101,7 +101,7 @@ items_to_seed = [
         specs="16-Litre chemical tank, 4 misting atomizers, 4m spray swath, dual RTK positioning",
         operator_info="Certified Drone Pilot & Field Assistant Included",
         service_coverage="Salem, Erode, Coimbatore, Namakkal (50km radius)",
-        image_url="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/spraying_drone.jpg",
         description="Commercial-grade agricultural drone with DGCA-certified pilot for precision foliar spraying."
     ),
     models.Listing(
@@ -119,7 +119,7 @@ items_to_seed = [
         specs="3HP Crompton single-phase motor, 3 reverse-action manganese blades, 800-1000 kg/hr output",
         operator_info="Operator & Technician Available on Request",
         service_coverage="Kolar, Hoskote, Malur, Devanahalli",
-        image_url="https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/chaff_cutter.jpg",
         description="Portable electric chaff cutter delivered to your cattle shed. Cuts Napier, maize, and sorghum stems to 1.5 cm."
     ),
     models.Listing(
@@ -137,7 +137,7 @@ items_to_seed = [
         specs="45 HP DI Engine, 4WD High Traction, Shaktiman 42-blade heavy rotavator, hydraulic MB plough",
         operator_info="Skilled Driver & Diesel Fuel Included",
         service_coverage="Guntur, Amaravati, Tenali, Mangalagiri, Vijayawada",
-        image_url="https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/mahindra_tractor.jpg",
         description="Heavy-duty 4WD tractor with skilled driver and diesel included. Ideal for wet puddle land and deep summer plowing."
     ),
     models.Listing(
@@ -155,7 +155,7 @@ items_to_seed = [
         specs="68HP Diesel Engine, Rubber Crawlers for marshy delta soils, 2.0m cutter bar width",
         operator_info="Experienced Operator Included with Field Support",
         service_coverage="Thanjavur, Tiruvarur, Nagapattinam, Mayiladuthurai",
-        image_url="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80",
+        image_url="/images/combine_harvester.jpg",
         description="Rubber-tracked combine harvester specialized for harvesting wet delta paddy without sinking."
     )
 ]

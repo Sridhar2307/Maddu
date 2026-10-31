@@ -14,175 +14,270 @@
   <link rel="stylesheet" href="/src/index.css" />
 </head>
 <body>
-  <!-- Top Accessibility & Vernacular Controls -->
-  <div class="vernacular-bar" id="vernacular-bar">
-    <div class="left-group" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-      <span class="inaph-badge" id="lbl-inaph">Govt INAPH Verified</span>
-      <span style="color: #94a3b8; font-size: 0.8rem;">AP • KA • KL • TN • TG • PY • AN • LD</span>
-      <div class="quick-role-switcher" style="display: flex; align-items: center; gap: 4px; margin-left: 8px; background: rgba(0,0,0,0.22); padding: 2px 6px; border-radius: 6px;">
-        <span style="font-size: 0.72rem; color: #cbd5e1;">Test As:</span>
-        <button class="role-pill" data-switch-role="BUYER" style="background: #0f766e; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Buyer (+91 9000000004)">Buyer</button>
-        <button class="role-pill" data-switch-role="SELLER" style="background: #0369a1; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Seller (+91 9000000002)">Seller</button>
-        <button class="role-pill" data-switch-role="VET" style="background: #b45309; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Vet (+91 9000000006)">Vet</button>
-        <button class="role-pill" data-switch-role="ADMIN" style="background: #991b1b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Admin (+91 9000000001)">Admin</button>
-      </div>
-    </div>
-    <div class="right-group">
-      <span class="selector-label" id="lbl-select-state">Select State / UT:</span>
-      <select class="custom-select" id="state-select">
-        <option value="ALL">All Southern States & UTs (அனைத்தும்)</option>
-        <option value="TN">Tamil Nadu (தமிழ்நாடு)</option>
-        <option value="AP">Andhra Pradesh (ఆంధ్రప్రదేశ్)</option>
-        <option value="TG">Telangana (తెలంగాణ)</option>
-        <option value="KA">Karnataka (ಕರ್ನಾಟಕ)</option>
-        <option value="KL">Kerala (കേരളം)</option>
-        <option value="PY">Puducherry (புதுச்சேரி)</option>
-        <option value="AN">Andaman & Nicobar Islands (அந்தமான் & நிக்கோபார்)</option>
-        <option value="LD">Lakshadweep (ലക്ഷദ്വീപ്)</option>
-      </select>
-
-      <span class="selector-label" style="margin-left: 8px;">Language / மொழி:</span>
-      <select class="custom-select" id="lang-select">
-        <option value="en">English (Global)</option>
-        <option value="ta">தமிழ் (Tamil)</option>
-        <option value="te">తెలుగు (Telugu)</option>
-        <option value="kn">ಕನ್ನಡ (Kannada)</option>
-        <option value="ml">മലയാളം (Malayalam)</option>
-        <option value="hi">हिन्दी (Hindi)</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- Primary Sticky Header -->
-  <header class="site-header">
-    <div class="header-container">
-      <div class="brand-wrapper" id="brand-home-btn">
-        <div class="brand-logo-icon">🌾</div>
-        <div class="brand-info">
-          <h1 id="brand-title">DakshinAgriHub</h1>
-          <p id="brand-subtitle">Southern Agri-Livestock Ecosystem</p>
-        </div>
-      </div>
-
-      <!-- Search & Vayal Voice Assistant -->
-      <div class="search-voice-container">
-        <input type="text" class="search-input" id="global-search" placeholder="Search breeds, fodder, mandi rates, or shandies..." />
-        <button class="voice-search-btn" id="voice-btn" title="Vayal Voice: Speak in your regional language">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-            <line x1="12" y1="19" x2="12" y2="22"></line>
+  <div class="app-layout" id="app-layout">
+    
+    <!-- Collapsible Left Sidebar (Matching Screenshot) -->
+    <aside class="app-sidebar collapsed" id="app-sidebar">
+      <div class="sidebar-header">
+        <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" title="Toggle Sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
       </div>
 
-      <!-- Post Listing Action Button -->
-      <button class="header-action-btn" id="btn-open-post-modal">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="8" x2="12" y2="16"></line>
-          <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg>
-        <span id="lbl-post-listing">+ Post Animal / Produce</span>
-      </button>
+      <div class="sidebar-content">
+        <div class="sidebar-section-label">DASHBOARD</div>
+        <nav class="sidebar-nav">
+          <button class="sidebar-nav-item active" data-tab="home" id="side-tab-home" title="Home">
+            <span class="nav-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </span>
+            <span class="nav-label">Home</span>
+          </button>
+          
+          <button class="sidebar-nav-item" data-tab="bazaar" id="side-tab-bazaar" title="Pashu & Poultry Bazaar">
+            <span class="nav-icon">🐄</span>
+            <span class="nav-label">Pashu & Poultry Bazaar</span>
+          </button>
 
-      <!-- Auth / Profile Action Button -->
-      <button class="header-action-btn" id="btn-auth-action" style="background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff;">
-        <span id="auth-btn-icon">🔑</span>
-        <span id="auth-btn-label">Login</span>
-      </button>
-    </div>
-  </header>
+          <button class="sidebar-nav-item" data-tab="mandi" id="side-tab-mandi" title="Live Mandi & Shandy Radar">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Live Mandi & Shandy Radar</span>
+          </button>
 
-  <!-- Navigation Module Pills -->
-  <nav class="nav-pill-bar">
-    <div class="nav-pill-container" id="nav-pill-container">
-      <button class="nav-pill active" data-tab="bazaar" id="nav-tab-bazaar">
-        <span>🐄</span> <span class="tab-text" id="tab-bazaar-txt">Pashu & Poultry Bazaar</span>
-      </button>
-      <button class="nav-pill" data-tab="mandi" id="nav-tab-mandi">
-        <span>📊</span> <span class="tab-text" id="tab-mandi-txt">Live Mandi & Shandy Radar</span>
-      </button>
-      <button class="nav-pill" data-tab="vivasaya" id="nav-tab-vivasaya">
-        <span>🌾</span> <span class="tab-text" id="tab-vivasaya-txt">Vivasaya & Fodder Mart</span>
-      </button>
-      <button class="nav-pill" data-tab="pashucare" id="nav-tab-pashucare">
-        <span>🩺</span> <span class="tab-text" id="tab-pashucare-txt">PashuCare & Tele-Vet</span>
-      </button>
-      <button class="nav-pill" data-tab="logistics" id="nav-tab-logistics">
-        <span>🚚</span> <span class="tab-text" id="tab-logistics-txt">Logistics & Escrow Desk</span>
-      </button>
-      <button class="nav-pill" data-tab="schemes" id="nav-tab-schemes">
-        <span>📜</span> <span class="tab-text" id="tab-schemes-txt">Govt Subsidies & Schemes</span>
-      </button>
-      <button class="nav-pill" data-tab="profile" id="nav-tab-profile">
-        <span>👤</span> <span class="tab-text" id="tab-profile-txt">My Profile</span>
-      </button>
-      <button class="nav-pill" data-tab="admin" id="nav-tab-admin" style="display: none; background: rgba(220, 38, 38, 0.15); border-color: #ef4444; color: #ef4444;">
-        <span>🛡️</span> <span class="tab-text" id="tab-admin-txt">Admin Panel</span>
-      </button>
-    </div>
-  </nav>
+          <button class="sidebar-nav-item" data-tab="vivasaya" id="side-tab-vivasaya" title="Vivasaya & Fodder Mart">
+            <span class="nav-icon">🌾</span>
+            <span class="nav-label">Vivasaya & Fodder Mart</span>
+          </button>
 
-  <!-- Live Southern Mandi & Commodity Ticker -->
-  <div class="mandi-ticker-bar">
-    <div class="ticker-label" id="lbl-ticker-badge">LIVE MANDI RATES</div>
-    <div class="ticker-marquee" id="ticker-marquee-content">
-      <!-- Injected via JavaScript -->
-    </div>
-  </div>
+          <button class="sidebar-nav-item" data-tab="pashucare" id="side-tab-pashucare" title="PashuCare & Tele-Vet">
+            <span class="nav-icon">🩺</span>
+            <span class="nav-label">PashuCare & Tele-Vet</span>
+          </button>
 
-  <!-- Hero / Regional Summary Banner -->
-  <section class="hero-banner" id="hero-banner">
-    <div class="hero-content">
-      <div class="hero-text-block">
-        <div class="state-indicator-pill" id="current-state-pill">
-          <span>📍</span> <span id="current-state-label">All 5 Southern States & 3 Union Territories</span>
+          <button class="sidebar-nav-item" data-tab="logistics" id="side-tab-logistics" title="Logistics & Escrow Desk">
+            <span class="nav-icon">🚚</span>
+            <span class="nav-label">Logistics & Escrow Desk</span>
+          </button>
+
+          <button class="sidebar-nav-item" data-tab="schemes" id="side-tab-schemes" title="Govt Subsidies & Schemes">
+            <span class="nav-icon">📜</span>
+            <span class="nav-label">Govt Subsidies & Schemes</span>
+          </button>
+
+          <!-- Admin Governance (Strictly visible only when logged in as ADMIN) -->
+          <button class="sidebar-nav-item" data-tab="admin" id="side-tab-admin" title="Admin Governance" style="display: none;">
+            <span class="nav-icon">🛡️</span>
+            <span class="nav-label">Admin Governance</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-nav-item" data-tab="login" id="side-tab-login" title="Login Portals">
+          <span class="nav-icon">🔑</span>
+          <span class="nav-label">Login Portals</span>
+        </button>
+        <button class="sidebar-nav-item" data-tab="profile" id="side-tab-settings" title="Settings & Profile">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">Settings</span>
+        </button>
+        <button class="sidebar-nav-item sidebar-logout-btn" id="side-btn-logout" data-action="logout" title="Logout">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </span>
+          <span class="nav-label">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Application Wrapper -->
+    <div class="app-main-area">
+
+      <!-- Top Accessibility & Vernacular Controls (Cleaned without test banner) -->
+      <div class="vernacular-bar" id="vernacular-bar" style="display: flex; justify-content: space-between; align-items: center; padding: 6px 20px;">
+        <div class="vernacular-brand-hint" style="color: #cbd5e1; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+          <span>🌾 Southern India Integrated Agri-Livestock Portal</span>
         </div>
-        <h2 class="hero-title" id="hero-title">Empowering Southern Farmers with Direct Trade & Transparent Mandis</h2>
-        <p class="hero-sub" id="hero-sub">Zero-middlemen livestock trade, certified digital pashu passports, cross-state fodder corridors, and transparent mandi intelligence.</p>
-        
-        <div class="hero-stats-row">
-          <div class="hero-stat-card">
-            <div class="stat-value" id="stat-verified-count">2,840+</div>
-            <div class="stat-title">Verified Native Animals</div>
-          </div>
-          <div class="hero-stat-card">
-            <div class="stat-value">12 Shandies</div>
-            <div class="stat-title">Weekly Physical Markets</div>
-          </div>
-          <div class="hero-stat-card">
-            <div class="stat-value">100% Escrow</div>
-            <div class="stat-title">PashuSafe Protected</div>
-          </div>
-          <div class="hero-stat-card">
-            <div class="stat-value">6 Languages</div>
-            <div class="stat-title">Real-time Auto-Translate</div>
-          </div>
+        <div class="right-group">
+          <span class="selector-label" id="lbl-select-state">Select State / UT:</span>
+          <select class="custom-select" id="state-select">
+            <option value="ALL">All Southern States & UTs (அனைத்தும்)</option>
+            <option value="TN">Tamil Nadu (தமிழ்நாடு)</option>
+            <option value="AP">Andhra Pradesh (ఆంధ్రప్రదేశ్)</option>
+            <option value="TG">Telangana (తెలంగాణ)</option>
+            <option value="KA">Karnataka (ಕರ್ನಾಟಕ)</option>
+            <option value="KL">Kerala (കേരളം)</option>
+            <option value="PY">Puducherry (புதுச்சேரி)</option>
+            <option value="AN">Andaman & Nicobar Islands (அந்தமான் & நிக்கோபார்)</option>
+            <option value="LD">Lakshadweep (ലക്ഷദ്വീപ്)</option>
+          </select>
+
+          <span class="selector-label" style="margin-left: 8px;">Language / மொழி:</span>
+          <select class="custom-select" id="lang-select">
+            <option value="en">English (Global)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+            <option value="ml">മലയാളം (Malayalam)</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+          </select>
         </div>
       </div>
 
-      <!-- Quick Action Floating Card -->
-      <div class="hero-action-card">
-        <h3 id="lbl-quick-tools">Smart Farmer Tools</h3>
-        <p id="lbl-quick-tools-sub">Instant AI weight estimation, gestation calendars & freight calculators</p>
-        <div class="quick-action-btn-group">
-          <button class="action-btn-secondary" id="btn-hero-open-weight">
-            <span>⚖️ <strong id="lbl-hero-ai-weight">AI Weight & Fair-Price Estimator</strong></span>
-            <span>→</span>
+      <!-- Primary Sticky Header (Matching Screenshot) -->
+      <header class="site-header">
+        <div class="header-container">
+          <div class="brand-wrapper" id="brand-home-btn">
+            <div class="brand-logo-icon">🌾</div>
+            <div class="brand-info">
+              <h1 id="brand-title">DakshinAgriHub</h1>
+              <p id="brand-subtitle">SOUTHERN INDIA INTEGRATED AGRI-LIVESTOCK & MANDI ECOSYSTEM</p>
+            </div>
+          </div>
+
+          <!-- Search & Vayal Voice Assistant -->
+          <div class="search-voice-container">
+            <input type="text" class="search-input" id="global-search" placeholder="Search breeds, fodder, mandi rates, or shandies..." />
+            <button class="voice-search-btn" id="voice-btn" title="Vayal Voice: Speak in your regional language">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Post Listing Action Button (Dark Green Pill matching screenshot) -->
+          <button class="header-action-btn" id="btn-open-post-modal" style="background: #042417; color: #ffffff; border-radius: 9999px; font-weight: 700;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+            <span id="lbl-post-listing">+ Post New Animal / Produce</span>
           </button>
-          <button class="action-btn-secondary" id="btn-hero-open-calving">
-            <span>📅 <strong id="lbl-hero-calving">Estrus & Calving Cycle Calendar</strong></span>
-            <span>→</span>
-          </button>
-          <button class="action-btn-secondary" id="btn-hero-open-feedroi">
-            <span>🥛 <strong id="lbl-hero-feedroi">Daily Fodder & Milk Profit ROI</strong></span>
-            <span>→</span>
+
+          <!-- Auth / Profile Action Button -->
+          <button class="header-action-btn" id="btn-auth-action" style="background: #f0fdf4; border-color: #bbf7d0; color: #166534; border-radius: 9999px; font-weight: 700;">
+            <span id="auth-btn-icon">🔑</span>
+            <span id="auth-btn-label">Login / Portals</span>
           </button>
         </div>
+      </header>
+
+      <!-- Live Southern Mandi & Commodity Ticker -->
+      <div class="mandi-ticker-bar">
+        <div class="ticker-label" id="lbl-ticker-badge">LIVE MANDI RATES</div>
+        <div class="ticker-marquee" id="ticker-marquee-content">
+          <!-- Injected via JavaScript -->
+        </div>
       </div>
-    </div>
-  </section>
+
+      <!-- Hero / Regional Summary Banner with Automatic Default Banners (Matching Screenshot) -->
+      <section class="hero-banner" id="hero-banner">
+        <div class="hero-content">
+          <div class="hero-slides-wrapper" id="hero-slides-wrapper">
+
+            <!-- Banner 1: Marketplace & Mandi Radar -->
+            <div class="hero-slide active" data-slide-index="0">
+              <div class="hero-text-block">
+                <h2 class="hero-title">Trade with more clarity and confidence</h2>
+                <p class="hero-sub">Browse livestock and poultry listings with digital passport details, track mandi rates, and find weekly shandies across the region.</p>
+                <div class="hero-actions-row">
+                  <button class="hero-explore-btn" data-banner-tab="mandi">
+                    Explore mandis & shandies ➔
+                  </button>
+                </div>
+              </div>
+
+              <div class="hero-side-card">
+                <span class="hero-card-tag">MARKETPLACE & MANDI RADAR</span>
+                <h3 class="hero-card-heading">Useful details, all in one place</h3>
+                <p class="hero-card-desc">Compare regional listings and market signals, discover scheduled livestock markets, and connect directly with sellers.</p>
+                <ul class="hero-card-bullets">
+                  <li><span>🛡️</span> Digital pashu passports</li>
+                  <li><span>📊</span> Live mandi rate insights</li>
+                  <li><span>📍</span> Weekly shandy information</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Banner 2: PashuCare & Tele-Vet Health Network -->
+            <div class="hero-slide" data-slide-index="1">
+              <div class="hero-text-block">
+                <h2 class="hero-title">Expert veterinary care right at your farm shed</h2>
+                <p class="hero-sub">Instant AI symptom triage for bloat & mastitis, estrus gestation tracking, and direct consultation with licensed veterinary dispensaries.</p>
+                <div class="hero-actions-row">
+                  <button class="hero-explore-btn" data-banner-tab="pashucare" style="background: #fbcfe8; color: #831843;">
+                    Consult Tele-Vet Now ➔
+                  </button>
+                </div>
+              </div>
+
+              <div class="hero-side-card" style="border-color: rgba(244, 114, 182, 0.35);">
+                <span class="hero-card-tag" style="color: #fbcfe8;">TELE-VET & HEALTH ADVISORY</span>
+                <h3 class="hero-card-heading">24/7 Livestock Health Protection</h3>
+                <p class="hero-card-desc">Protect your milch herd with timely diagnostic protocols, gestation forecasts, and emergency veterinary first-aid guides.</p>
+                <ul class="hero-card-bullets">
+                  <li><span>🩺</span> Rapid AI bloat & mastitis triage</li>
+                  <li><span>📅</span> Gestation & calving date forecast</li>
+                  <li><span>📞</span> Toll-free 1800-425-SOUTH advisory</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Banner 3: PashuSafe Escrow & Animal Transit -->
+            <div class="hero-slide" data-slide-index="2">
+              <div class="hero-text-block">
+                <h2 class="hero-title">Zero-middlemen trade with 100% escrow protection</h2>
+                <p class="hero-sub">Your purchase funds remain safely locked in escrow until the animal arrives and passes physical verification at your farm.</p>
+                <div class="hero-actions-row">
+                  <button class="hero-explore-btn" data-banner-tab="logistics" style="background: #fed7aa; color: #7c2d12;">
+                    Book Protected Logistics ➔
+                  </button>
+                </div>
+              </div>
+
+              <div class="hero-side-card" style="border-color: rgba(251, 146, 60, 0.35);">
+                <span class="hero-card-tag" style="color: #fed7aa;">ESCROW & ANIMAL WELFARE</span>
+                <h3 class="hero-card-heading">Verified Safe Transportation</h3>
+                <p class="hero-card-desc">AWBI compliant ventilated Bolero carriers, inter-state checkpost documentation, and guaranteed transparent payment release.</p>
+                <ul class="hero-card-bullets">
+                  <li><span>🔒</span> 100% Zero seller payment defaults</li>
+                  <li><span>🚚</span> Ventilated livestock truck booking</li>
+                  <li><span>✓</span> Instant INAPH tag verification</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carousel Controls: Dots on Left & Arrows on Right (Matching Image 2 & 3) -->
+          <div class="hero-bottom-controls">
+            <div class="hero-slider-dots" id="hero-carousel-dots">
+              <button class="dot-indicator active" data-slide-to="0" aria-label="Slide 1: Mandi Radar"></button>
+              <button class="dot-indicator" data-slide-to="1" aria-label="Slide 2: Tele-Vet Care"></button>
+              <button class="dot-indicator" data-slide-to="2" aria-label="Slide 3: Escrow Logistics"></button>
+            </div>
+
+            <div class="hero-slider-arrows">
+              <button class="slider-arrow-btn" id="hero-slide-prev" title="Previous Slide">←</button>
+              <button class="slider-arrow-btn" id="hero-slide-next" title="Next Slide">→</button>
+            </div>
+          </div>
+        </div>
+      </section>
 
   <!-- Large Dashboard Service Buttons (Touch-Friendly Quick Access) -->
   <section class="dashboard-modules-section" id="dashboard-modules-section">
@@ -198,7 +293,7 @@
       </div>
 
       <div class="large-buttons-grid" id="large-buttons-grid">
-        <button class="large-dash-btn active" data-tab="bazaar" id="large-btn-bazaar">
+        <button class="large-dash-btn" data-tab="bazaar" id="large-btn-bazaar">
           <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
             <span>🐄</span>
           </div>
@@ -447,34 +542,101 @@
 
   <!-- MODAL: Tele-Vet & Veterinary Visit Booking -->
   <div class="modal-overlay" id="vet-modal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <h3 id="lbl-vet-modal-title">Register Veterinary Visit / Consultation Request</h3>
-        <button class="modal-close-btn" id="close-vet-modal">&times;</button>
+    <div class="modal-dialog" style="max-width: 580px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #042417 0%, #0f4f34 100%); color: #fff;">
+        <h3 id="lbl-vet-modal-title" style="color: #fef08a; display: flex; align-items: center; gap: 8px;">
+          <span>🩺</span> Book Appointment with Dr. Radhakrishnan (Vet)
+        </h3>
+        <button class="modal-close-btn" id="close-vet-modal" style="color: #fff;">&times;</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="padding: 20px;">
         <form id="vet-request-form" style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Farmer / Customer Name</label>
+              <input type="text" id="vet-customer-name" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="Your Name (e.g. Anand Murthy)" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Contact Mobile Phone</label>
+              <input type="tel" id="vet-phone" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="+91 98421 XXXXX" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Farm Location / District</label>
+              <input type="text" id="vet-district" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="e.g. Erode, Tamil Nadu" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Consultation Mode</label>
+              <select id="vet-mode" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px; border-radius: 8px;">
+                <option value="Tele-Vet Video Call">📹 Tele-Vet Live Video Call</option>
+                <option value="On-Farm Visit">🏡 On-Farm Shed Visit</option>
+                <option value="Phone Audio Consultation">📞 Phone Audio Consultation</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Species / Animal Type</label>
+              <select id="vet-species" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px; border-radius: 8px;">
+                <option value="Indigenous Cow / Cattle">Indigenous Cow / Cattle</option>
+                <option value="Murrah / Native Buffalo">Murrah / Native Buffalo</option>
+                <option value="Goat (Malabari / Tellicherry / Boer)">Goat (Malabari / Tellicherry / Boer)</option>
+                <option value="Sheep (Mecheri / Nilgiri)">Sheep (Mecheri / Nilgiri)</option>
+                <option value="Poultry (Backyard / Asil / Nicobari)">Poultry (Backyard / Asil / Nicobari)</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Govt Ear-Tag (Optional)</label>
+              <input type="text" id="vet-ear-tag" class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" placeholder="e.g. TN-3304-9812-4410" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Preferred Appointment Date</label>
+              <input type="date" id="vet-date" required class="search-input" style="border-radius: 8px; margin-top: 4px; padding: 10px;" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Preferred Time Slot</label>
+              <select id="vet-slot" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px; border-radius: 8px;">
+                <option value="10:00 AM - 11:30 AM">Morning (10:00 AM - 11:30 AM)</option>
+                <option value="02:00 PM - 03:30 PM">Afternoon (02:00 PM - 03:30 PM)</option>
+                <option value="05:00 PM - 06:30 PM">Evening (05:00 PM - 06:30 PM)</option>
+              </select>
+            </div>
+          </div>
+
           <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Species / Animal Type</label>
-            <select id="vet-species" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px;">
-              <option value="COW">Indigenous Cow / Cattle</option>
-              <option value="BUFFALO">Murrah / Native Buffalo</option>
-              <option value="GOAT">Goat (Malabari / Tellicherry / Boer)</option>
-              <option value="SHEEP">Sheep (Mecheri / Nilgiri)</option>
-              <option value="POULTRY">Indigenous Poultry / Backyard Fowl</option>
-            </select>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Observed Symptoms &amp; Consultation Reason</label>
+            <textarea id="vet-symptoms" required rows="3" class="search-input" style="border-radius: 8px; margin-top: 4px; resize: vertical;" placeholder="Describe illness symptoms, duration, gestation status, feed intake changes..."></textarea>
           </div>
-          <div>
-            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Observed Symptoms & Medical History</label>
-            <textarea id="vet-symptoms" required rows="3" class="search-input" style="border-radius: 8px; margin-top: 4px; resize: vertical;" placeholder="Describe symptoms, duration, temperature, feed intake changes..."></textarea>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; font-size: 0.78rem; color: #166534; line-height: 1.4;">
+            🛡️ <strong>Direct Doctor Dispatch:</strong> Your appointment request is logged directly into Dr. Radhakrishnan's clinical consultation queue and assigned an instant reference ID.
           </div>
-          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; font-size: 0.78rem; color: #166534;">
-            🛡️ Your consultation ticket is logged into the Southern State Animal Husbandry Emergency Coordination Desk.
-          </div>
-          <button type="submit" class="btn-directions" style="padding: 12px; font-size: 0.95rem;">
-            Submit Emergency Ticket & Connect Vet
+
+          <button type="submit" class="btn-directions" style="padding: 13px; font-size: 0.95rem; background: #047857; font-weight: 800;">
+            ✓ Confirm &amp; Book Veterinary Appointment
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Tele-Vet Live Video Call Simulation -->
+  <div class="modal-overlay" id="tele-vet-video-modal">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #0f766e 0%, #047857 100%); color: #fff;">
+        <h3 id="lbl-video-call-title" style="color: #fff; display: flex; align-items: center; gap: 8px;">
+          <span>📹</span> Live Tele-Vet Encrypted Video Consultation
+        </h3>
+        <button class="modal-close-btn" id="close-tele-vet-video-modal" style="color: #fff;">&times;</button>
+      </div>
+      <div class="modal-body" id="tele-vet-video-modal-body" style="padding: 20px;">
+        <!-- Rendered dynamically -->
       </div>
     </div>
   </div>
@@ -524,6 +686,58 @@
     </div>
   </div>
 
+  <!-- MODAL: PashuSafe Pay Fund Locker -->
+  <div class="modal-overlay" id="pashusafe-pay-modal">
+    <div class="modal-dialog" style="max-width: 640px;">
+      <div class="modal-header">
+        <h3>🛡️ PashuSafe Pay — Escrow Fund Locker</h3>
+        <button class="modal-close-btn" id="close-pashusafe-pay-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="pashusafe-pay-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Live Package & Transit Tracker -->
+  <div class="modal-overlay" id="tracker-modal">
+    <div class="modal-dialog" style="max-width: 740px;">
+      <div class="modal-header">
+        <h3>🚚 Live Livestock Transit & Package Tracker</h3>
+        <button class="modal-close-btn" id="close-tracker-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="tracker-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Biometric Ear-Tag & Health Check Scanner -->
+  <div class="modal-overlay" id="scanner-modal">
+    <div class="modal-dialog" style="max-width: 700px;">
+      <div class="modal-header">
+        <h3>🔍 Biometric Ear-Tag & Physical Health Scanner</h3>
+        <button class="modal-close-btn" id="close-scanner-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="scanner-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PashuSafe Escrow Release Receipt -->
+  <div class="modal-overlay" id="receipt-modal">
+    <div class="modal-dialog" style="max-width: 600px;">
+      <div class="modal-header" style="background: linear-gradient(90deg, #065f46 0%, #047857 100%);">
+        <h3>🧾 PashuSafe Escrow Release & Settlement Receipt</h3>
+        <button class="modal-close-btn" id="close-receipt-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="receipt-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification element -->
   <div class="toast-notice" id="toast-notice">
     <span id="toast-icon">✓</span>
@@ -567,6 +781,8 @@
           <li><a href="#" data-set-tab="pashucare">Tele-Vet & Gestation</a></li>
           <li><a href="#" data-set-tab="logistics">PashuSafe Escrow Protection</a></li>
           <li><a href="#" data-set-tab="schemes">Subsidies Directory</a></li>
+          <li><a href="#" data-set-tab="admin" id="footer-admin-link" style="display: none; color: #f87171; font-weight: 700;">🛡️ Central Admin Console</a></li>
+          <li><a href="#" data-set-tab="login" style="color: #6ee7b7; font-weight: 600;">🔑 Login Portals (Buyer/Seller/Vet/Admin)</a></li>
         </ul>
       </div>
 
@@ -583,12 +799,14 @@
         </p>
       </div>
     </div>
-            
+
     <div class="footer-bottom">
       <div>© 2026 DakshinAgriHub. All rights reserved. Built for Southern India Agri-Livestock Community.</div>
       <div>Zero Brokerage • Biometric Ear-Tag Verified • Animal Welfare Board Compliant Transport</div>
     </div>
   </footer>
+  </div><!-- .app-main-area -->
+</div><!-- .app-layout -->
 
   <script type="module" src="/src/main.js"></script>
 </body>

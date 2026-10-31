@@ -2840,4 +2840,601 @@ body {
   color: #0f172a;
 }
 
+/* ==========================================================================
+   PASHUSAFE ESCROW DESK, LIVE TRACKER, SCANNER & SETTLEMENT STYLES
+   ========================================================================== */
+
+.pashusafe-hero-strip {
+  background: linear-gradient(135deg, #042417 0%, #0a3824 50%, #064e3b 100%);
+  border-radius: 18px;
+  padding: 24px 28px;
+  color: #ffffff;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 10px 25px -5px rgba(4, 36, 23, 0.25);
+  border: 1px solid rgba(167, 243, 208, 0.2);
+}
+
+.pashusafe-hero-left h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.pashusafe-hero-left p {
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+.pashusafe-hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-pashusafe-primary {
+  background: #10b981;
+  color: #042417;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.btn-pashusafe-primary:hover {
+  background: #34d399;
+  transform: translateY(-2px);
+}
+
+.btn-pashusafe-outline {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.btn-pashusafe-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #a7f3d0;
+}
+
+/* KPI Grid */
+.pashusafe-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.pashusafe-kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pashusafe-kpi-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.pashusafe-kpi-info .kpi-label {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.pashusafe-kpi-info .kpi-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #042417;
+  margin-top: 2px;
+}
+
+/* Consignment Orders Cards */
+.consignment-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.consignment-card:hover {
+  border-color: #10b981;
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.08);
+}
+
+.consignment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+
+.consignment-id-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.consignment-ref {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #042417;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.consignment-body {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .consignment-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.consignment-thumb {
+  width: 100px;
+  height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #e2e8f0;
+}
+
+.consignment-details h4 {
+  font-size: 1.1rem;
+  color: #042417;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.consignment-route-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #047857;
+  background: #ecfdf5;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.consignment-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 190px;
+}
+
+/* Status Pills */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pill.locked {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.status-pill.transit {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.status-pill.arrived {
+  background: #ede9fe;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+}
+
+.status-pill.verified {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.status-pill.released {
+  background: #10b981;
+  color: #ffffff;
+  border: 1px solid #059669;
+}
+
+/* Live Tracker Modal UI */
+.tracker-container {
+  padding: 10px;
+}
+
+.tracker-route-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.route-endpoints {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.route-endpoint {
+  display: flex;
+  flex-direction: column;
+  max-width: 45%;
+}
+
+.route-endpoint .ep-label {
+  font-size: 0.74rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.route-endpoint .ep-name {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #042417;
+  margin-top: 2px;
+}
+
+.route-line-wrap {
+  position: relative;
+  margin: 10px 0 24px;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+}
+
+.route-line-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+.route-truck-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: #042417;
+  border: 2px solid #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Vehicle Telematics */
+.telematics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.telematics-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.telematics-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #042417;
+  margin-top: 2px;
+}
+
+.telematics-sub {
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* Transit Timeline Checklist */
+.transit-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.transit-node {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.transit-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  background: #e2e8f0;
+  color: #64748b;
+}
+
+.transit-node.done .transit-icon {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.transit-node.current .transit-icon {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
+
+.transit-text h5 {
+  font-size: 0.88rem;
+  color: #042417;
+  margin: 0;
+}
+
+.transit-text p {
+  font-size: 0.76rem;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+/* Biometric Scanner UI */
+.scanner-viewport {
+  position: relative;
+  background: #0f172a;
+  border-radius: 16px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  overflow: hidden;
+  border: 2px solid #334155;
+  margin-bottom: 18px;
+}
+
+.scanner-laser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ef4444, #f87171, transparent);
+  box-shadow: 0 0 15px #ef4444;
+  animation: scan-move 2.2s infinite ease-in-out alternate;
+}
+
+@keyframes scan-move {
+  0% { top: 10%; }
+  100% { top: 90%; }
+}
+
+.scanner-reticle {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  border: 2px dashed #38bdf8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #38bdf8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 6px;
+}
+
+.health-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.health-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.health-item:hover {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.health-item.checked {
+  background: #ecfdf5;
+  border-color: #34d399;
+}
+
+.health-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #10b981;
+  cursor: pointer;
+}
+
+.health-item-text {
+  font-size: 0.86rem;
+  color: #042417;
+  font-weight: 600;
+}
+
+.health-item-sub {
+  font-size: 0.74rem;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* PashuSafe Pay Fund Locker Modal */
+.pay-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+
+@media (max-width: 600px) {
+  .pay-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pay-option-card {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pay-option-card:hover {
+  border-color: #10b981;
+}
+
+.pay-option-card.selected {
+  border-color: #059669;
+  background: #ecfdf5;
+}
+
+.pay-option-icon {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.pay-option-title {
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #042417;
+}
+
+.pay-option-desc {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* Settlement Receipt */
+.receipt-box {
+  background: #ffffff;
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.receipt-stamp {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  border: 2px solid #059669;
+  color: #059669;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transform: rotate(-6deg);
+  opacity: 0.9;
+}
+
+
 

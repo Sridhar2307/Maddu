@@ -27,7 +27,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Grazing in Kangayam Korangadu grassland + 3kg CO-4 Super Napier + 1kg Cottonseed Cake",
     description: "Authentic indigenous Kangayam cow known for high A2 milk quality and resilience to drought. Mild temper, easy hand-milking. 360° video available.",
-    imageUrl: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/kangayam_cow.jpg",
     hasVideo360: true
   },
   {
@@ -57,7 +57,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Maize stover, sorghum stover, subabul fodder, mineral mixture 50g daily",
     description: "Exceptional Ongole pedigree stud bull. Ideal for cross-breeding resistance or high-end indigenous farm breeding. Strong hump, clear white coat.",
-    imageUrl: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/ongole_bull.jpg",
     hasVideo360: true
   },
   {
@@ -87,7 +87,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Ragi straw, sugarcane tops, green lucerne, horsegram concentrate",
     description: "Pair of trained Hallikar bullocks with backward-curved horns and energetic trot. Ideal for natural farming tillage and temple processions.",
-    imageUrl: "https://images.unsplash.com/photo-1596733430284-f7437764b1a9?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/hallikar_bulls.jpg",
     hasVideo360: true
   },
   {
@@ -116,7 +116,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Fresh cut green grass, groundnut haulms, jaggery water with mineral salt",
     description: "Rare certified Punganur dwarf cow. Height is under 90 cm at withers. Produces milk with 8% butterfat rich in medicinal properties.",
-    imageUrl: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/punganur_cow.jpg",
     hasVideo360: true
   },
   {
@@ -145,7 +145,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Guinea grass, rice congee with coconut cake, azolla 500g",
     description: "World's smallest cattle breed. Highly resistant to tick-borne fever and tropical humidity. Ideal for terrace or homestead natural dairy.",
-    imageUrl: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/vechur_cow.jpg",
     hasVideo360: true
   },
   {
@@ -174,7 +174,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Jackfruit leaves, Subabul (Leucaena), wheat bran and salt lick",
     description: "High prolifacy Malabari doe with two healthy female kids included in price. High milk producer suitable for commercial stall-fed goat rearing.",
-    imageUrl: "https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/malabari_goat.jpg",
     hasVideo360: true
   },
   {
@@ -203,7 +203,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Green maize stover 25kg, dry paddy straw 6kg, cotton seed concentrate 4kg",
     description: "Jet-black Murrah buffalo with curled horns. Consistent 14L/day morning+evening milking. 7.8% fat, ideal for commercial dairy farmers.",
-    imageUrl: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/murrah_buffalo.jpg",
     hasVideo360: true
   },
   {
@@ -232,7 +232,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Island coconut meat scraps, termite foraging, crushed maize and kitchen green waste",
     description: "Endemic to Nicobar Islands, bred for extreme disease resistance against bird flu and coastal dampness. Flighty, self-foraging, hardy layers.",
-    imageUrl: "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/nicobari_poultry.jpg",
     hasVideo360: false
   },
   {
@@ -261,7 +261,7 @@ export const LIVESTOCK_LISTINGS = [
     ],
     diet: "Coconut fronds, dried grass bundles imported via Kochi port, fish meal supplement",
     description: "Specially adapted to island climate and saline air. Slat-reared, high survivability with zero foot-rot issues.",
-    imageUrl: "https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/images/island_goat.jpg",
     hasVideo360: false
   }
 ];
@@ -271,65 +271,101 @@ export const FODDER_LISTINGS = [
     id: "fodder-201",
     title: "CO-4 / Super Napier Green Grass Fresh Harvest",
     type: "Green Fodder",
+    category: "FODDER",
+    variety: "CO-4 Napier Hybrid Grass",
+    condition: "Fresh Green Harvest",
     stateId: "TN",
     stateName: "Tamil Nadu",
     district: "Thanjavur Delta",
     price: "₹2.20 / kg",
+    unitPriceNum: 2.2,
+    unit: "kg",
     moisture: "75%",
     protein: "10.5% Crude Protein",
     minOrder: "1.5 Tonnes (1500 kg)",
+    minOrderQty: 1500,
+    availableQty: "25 Tonnes",
     seller: "Kaveri Organic Fodder Farms",
     phone: "+91 94431 82901",
     delivery: "Truck delivery across TN, Puducherry & Chittoor within 24h",
-    imageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80"
+    deliveryCharge: 650,
+    description: "Freshly harvested CO-4 Napier hybrid grass cut at peak 45-day maturity. Rich in succulent digestible nutrients, ideal for improving butterfat in crossbred cows and Murrah buffaloes.",
+    imageUrl: "/images/napier_grass.jpg"
   },
   {
     id: "fodder-202",
     title: "Mechanized Baled Dry Paddy Straw (High Density Bales)",
     type: "Dry Roughage",
+    category: "FODDER",
+    variety: "BPT 5204 (Sona Masoori) Dry Straw",
+    condition: "Dry Machine-Compressed Bales",
     stateId: "AP",
     stateName: "Andhra Pradesh",
     district: "West Godavari (Eluru)",
     price: "₹180 / 25kg Bale (₹7.20 / kg)",
+    unitPriceNum: 180,
+    unit: "bale",
     moisture: "12% (Rain Protected)",
     protein: "4.2% Crude Protein",
     minOrder: "150 Bales (Mini Truck load)",
+    minOrderQty: 150,
+    availableQty: "2,000 Bales",
     seller: "Godavari Agri Bio-Energy",
     phone: "+91 98480 31129",
     delivery: "Direct transit to drought-hit Rayalaseema & North Karnataka",
-    imageUrl: "https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80"
+    deliveryCharge: 1200,
+    description: "Dense, rectangular baled rice straw harvested mechanically with minimum silica dust. Stored under tarpaulin protection, free from mold, ideal for long-term dairy herd dry matter maintenance.",
+    imageUrl: "/images/paddy_straw_bales.jpg"
   },
   {
     id: "fodder-203",
     title: "Fermented Sweet Corn Silage in 50kg Hermetic Bags",
     type: "Silage",
+    category: "FODDER",
+    variety: "Pioneer Hybrid Sweet Corn (Whole Plant with Cob)",
+    condition: "Fermented Anaerobic Hermetic Bags",
     stateId: "KA",
     stateName: "Karnataka",
     district: "Mandya / Hassan",
     price: "₹340 / 50kg Bag (₹6.80 / kg)",
+    unitPriceNum: 340,
+    unit: "bag",
     moisture: "65%",
     protein: "9.2% CP + High Starch",
     minOrder: "20 Bags (1 Tonne)",
+    minOrderQty: 20,
+    availableQty: "400 Bags (20 Tonnes)",
     seller: "Mandya Silage Cooperative",
     phone: "+91 99801 22910",
     delivery: "Ships anywhere in KA, KL, and TN",
-    imageUrl: "https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&w=800&q=80"
+    deliveryCharge: 850,
+    description: "Anaerobically packed sweet corn silage including whole crushed sweet corn ears. Guarantees 9+ months shelf life with acidic pH 3.8 to boost daily milk output during lean summer months.",
+    imageUrl: "/images/corn_silage.jpg"
   },
   {
     id: "fodder-204",
     title: "Solvent-Extracted Expeller Groundnut Cake (Kadalai Punnakku)",
     type: "Concentrate Cake",
+    category: "FODDER",
+    variety: "TMV-7 Groundnut Expeller Cake",
+    condition: "De-oiled Dry Flakes & Slabs",
     stateId: "TN",
     stateName: "Tamil Nadu",
     district: "Pollachi, Coimbatore",
     price: "₹38 / kg (₹1,900 / 50kg bag)",
+    unitPriceNum: 38,
+    unit: "kg",
     moisture: "8%",
     protein: "42% High Bypass Protein",
-    minOrder: "5 Bags (250 kg)",
+    minOrder: "250 kg (5 Bags)",
+    minOrderQty: 250,
+    availableQty: "10 Tonnes",
     seller: "Pollachi Agro Extractors",
     phone: "+91 98432 00192",
     delivery: "Daily supply to Kerala dairy co-operatives and Kongu farms",
-    imageUrl: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=800&q=80"
+    deliveryCharge: 500,
+    description: "High-grade cold-expeller groundnut oil cake packed with natural amino acids. Boosts dairy cow ruminal microbial protein and lactation yield.",
+    imageUrl: "/images/groundnut_cake.jpg"
   }
 ];
 
@@ -338,36 +374,92 @@ export const EQUIPMENT_LISTINGS = [
     id: "equip-301",
     title: "16-Litre Hexacopter Agricultural Spraying Drone with Pilot",
     service: "Drone Spraying for Fodder / Paddy / Coconut",
+    category: "Agricultural Drone",
     stateId: "TN",
+    stateName: "Tamil Nadu",
     district: "Salem / Erode / Coimbatore",
     rate: "₹450 / Acre (Includes GPS mapping & battery charge)",
+    rateNum: 450,
+    pricingUnit: "acre",
     owner: "VayalDrone Agro Tech",
     phone: "+91 98425 99182",
     availability: "Available for booking 7 days a week",
-    imageUrl: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=80"
+    operator: "Certified Drone Pilot & Field Assistant Included",
+    coverage: "Salem, Erode, Coimbatore, Namakkal (50km radius)",
+    specs: "16-Litre chemical tank, 4 misting atomizers, 4m spray swath, dual RTK centimeter precision, 3 swappable batteries + generator van",
+    description: "Commercial agricultural spraying drone operated by DGCA-certified pilot. Delivers ultra-fine aerosol droplets under leaf canopies for micronutrients, organic neem decoctions, or pest control.",
+    imageUrl: "/images/spraying_drone.jpg"
   },
   {
     id: "equip-302",
     title: "Heavy Duty 3HP Electric Grass & Straw Chaff Cutter (Custom Hire)",
     service: "Doorstep Fodder Cutting Machine",
+    category: "Fodder Processing Machinery",
     stateId: "KA",
+    stateName: "Karnataka",
     district: "Bengaluru Rural / Kolar",
     rate: "₹350 / Hour or ₹1,800 / Full Day",
+    rateNum: 350,
+    pricingUnit: "hour",
+    pricingOptions: [
+      { label: "Per Hour (₹350 / hour)", unit: "hour", rate: 350 },
+      { label: "Full Day (8 Hours • ₹1,800)", unit: "day", rate: 1800 }
+    ],
     owner: "Kolar Machinery Bank",
     phone: "+91 98860 11920",
     availability: "Same day delivery on mini-auto",
-    imageUrl: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80"
+    operator: "Operator & Technician Available on Request",
+    coverage: "Kolar, Hoskote, Malur, Devanahalli, Bangarapet",
+    specs: "3HP Crompton single-phase motor, 3 reverse-action manganese blades, 800-1000 kg/hr output, chops to 1.5 cm uniform length",
+    description: "Doorstep electric chaff cutter delivered right to your farm shed. Chops dry paddy straw and thick Napier grass stems finely to eliminate 90% of fodder waste.",
+    imageUrl: "/images/chaff_cutter.jpg"
   },
   {
     id: "equip-303",
     title: "45 HP Mahindra 4WD Tractor with 42-Blade Rotavator & MB Plough",
     service: "Land Prep & Plowing",
+    category: "Tractor & Heavy Machinery",
     stateId: "AP",
+    stateName: "Andhra Pradesh",
     district: "Guntur / Vijayawada",
     rate: "₹950 / Hour (With Diesel & Operator)",
+    rateNum: 950,
+    pricingUnit: "hour",
+    pricingOptions: [
+      { label: "Per Hour (₹950 / hour • Diesel + Operator)", unit: "hour", rate: 950 },
+      { label: "Full Day (8 Hours • ₹7,200)", unit: "day", rate: 7200 }
+    ],
     owner: "Rythu Seva Center",
     phone: "+91 94411 77209",
     availability: "Book by pincode radius",
-    imageUrl: "https://images.unsplash.com/photo-1530267981375-f0de937f5f13?auto=format&fit=crop&w=800&q=80"
+    operator: "Skilled Driver & Diesel Fuel Included",
+    coverage: "Guntur, Amaravati, Tenali, Mangalagiri, Vijayawada",
+    specs: "45 HP DI Engine, 4WD High Traction, Shaktiman 42-blade heavy rotavator, hydraulic reversible 2-furrow MB plough",
+    description: "Heavy-duty 4WD tractor with experienced driver and diesel fuel included. Excels at deep tillage, dry land harrowing, and wetland puddling for paddy and fodder cropping.",
+    imageUrl: "/images/mahindra_tractor.jpg"
+  },
+  {
+    id: "equip-304",
+    title: "Kubota DC-68G High-Performance Combine Harvester (Paddy & Millets)",
+    service: "Combine Harvesting & Threshing",
+    category: "Harvesting Machinery",
+    stateId: "TN",
+    stateName: "Tamil Nadu",
+    district: "Thanjavur / Tiruvarur",
+    rate: "₹1,800 / Hour or ₹2,400 / Acre",
+    rateNum: 1800,
+    pricingUnit: "hour",
+    pricingOptions: [
+      { label: "Per Hour (₹1,800 / hour)", unit: "hour", rate: 1800 },
+      { label: "Per Acre (₹2,400 / acre)", unit: "acre", rate: 2400 }
+    ],
+    owner: "Delta Agri Mechanization Hub",
+    phone: "+91 94433 11200",
+    availability: "Delta Harvest Season Slots",
+    operator: "Experienced Operator Included with Field Support",
+    coverage: "Thanjavur, Tiruvarur, Nagapattinam, Mayiladuthurai",
+    specs: "68HP Diesel Engine, Wide Rubber Crawlers for marshy delta soils, 2.0m cutter bar width, 1250L grain tank",
+    description: "Rubber-tracked combine harvester that cuts, threshes, and cleans paddy in one pass without getting bogged down in soft river-delta soils.",
+    imageUrl: "/images/combine_harvester.jpg"
   }
 ];
