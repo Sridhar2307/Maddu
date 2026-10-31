@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DakshinAgriHub - Southern India Integrated Agri-Livestock & Mandi Platform</title>
+  <meta name="description" content="Multilingual AI-assisted livestock trading, digital pashu passport, live southern mandi rates, fodder corridors, and tele-vet ecosystem for 5 Southern States & 3 Union Territories." />
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/src/index.css" />
+</head>
+<body>
+  <!-- Top Accessibility & Vernacular Controls -->
+  <div class="vernacular-bar" id="vernacular-bar">
+    <div class="left-group" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+      <span class="inaph-badge" id="lbl-inaph">Govt INAPH Verified</span>
+      <span style="color: #94a3b8; font-size: 0.8rem;">AP • KA • KL • TN • TG • PY • AN • LD</span>
+      <div class="quick-role-switcher" style="display: flex; align-items: center; gap: 4px; margin-left: 8px; background: rgba(0,0,0,0.22); padding: 2px 6px; border-radius: 6px;">
+        <span style="font-size: 0.72rem; color: #cbd5e1;">Test As:</span>
+        <button class="role-pill" data-switch-role="BUYER" style="background: #0f766e; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Buyer (+91 9000000004)">Buyer</button>
+        <button class="role-pill" data-switch-role="SELLER" style="background: #0369a1; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Seller (+91 9000000002)">Seller</button>
+        <button class="role-pill" data-switch-role="VET" style="background: #b45309; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Vet (+91 9000000006)">Vet</button>
+        <button class="role-pill" data-switch-role="ADMIN" style="background: #991b1b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; font-size: 0.7rem; cursor: pointer;" title="Login as Admin (+91 9000000001)">Admin</button>
+      </div>
+    </div>
+    <div class="right-group">
+      <span class="selector-label" id="lbl-select-state">Select State / UT:</span>
+      <select class="custom-select" id="state-select">
+        <option value="ALL">All Southern States & UTs (அனைத்தும்)</option>
+        <option value="TN">Tamil Nadu (தமிழ்நாடு)</option>
+        <option value="AP">Andhra Pradesh (ఆంధ్రప్రదేశ్)</option>
+        <option value="TG">Telangana (తెలంగాణ)</option>
+        <option value="KA">Karnataka (ಕರ್ನಾಟಕ)</option>
+        <option value="KL">Kerala (കേരളം)</option>
+        <option value="PY">Puducherry (புதுச்சேரி)</option>
+        <option value="AN">Andaman & Nicobar Islands (அந்தமான் & நிக்கோபார்)</option>
+        <option value="LD">Lakshadweep (ലക്ഷദ്വീപ്)</option>
+      </select>
+
+      <span class="selector-label" style="margin-left: 8px;">Language / மொழி:</span>
+      <select class="custom-select" id="lang-select">
+        <option value="en">English (Global)</option>
+        <option value="ta">தமிழ் (Tamil)</option>
+        <option value="te">తెలుగు (Telugu)</option>
+        <option value="kn">ಕನ್ನಡ (Kannada)</option>
+        <option value="ml">മലയാളം (Malayalam)</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Primary Sticky Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand-wrapper" id="brand-home-btn">
+        <div class="brand-logo-icon">🌾</div>
+        <div class="brand-info">
+          <h1 id="brand-title">DakshinAgriHub</h1>
+          <p id="brand-subtitle">Southern Agri-Livestock Ecosystem</p>
+        </div>
+      </div>
+
+      <!-- Search & Vayal Voice Assistant -->
+      <div class="search-voice-container">
+        <input type="text" class="search-input" id="global-search" placeholder="Search breeds, fodder, mandi rates, or shandies..." />
+        <button class="voice-search-btn" id="voice-btn" title="Vayal Voice: Speak in your regional language">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            <line x1="12" y1="19" x2="12" y2="22"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Post Listing Action Button -->
+      <button class="header-action-btn" id="btn-open-post-modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="16"></line>
+          <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+        <span id="lbl-post-listing">+ Post Animal / Produce</span>
+      </button>
+
+      <!-- Auth / Profile Action Button -->
+      <button class="header-action-btn" id="btn-auth-action" style="background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff;">
+        <span id="auth-btn-icon">🔑</span>
+        <span id="auth-btn-label">Login</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Module Pills -->
+  <nav class="nav-pill-bar">
+    <div class="nav-pill-container" id="nav-pill-container">
+      <button class="nav-pill active" data-tab="bazaar" id="nav-tab-bazaar">
+        <span>🐄</span> <span class="tab-text" id="tab-bazaar-txt">Pashu & Poultry Bazaar</span>
+      </button>
+      <button class="nav-pill" data-tab="mandi" id="nav-tab-mandi">
+        <span>📊</span> <span class="tab-text" id="tab-mandi-txt">Live Mandi & Shandy Radar</span>
+      </button>
+      <button class="nav-pill" data-tab="vivasaya" id="nav-tab-vivasaya">
+        <span>🌾</span> <span class="tab-text" id="tab-vivasaya-txt">Vivasaya & Fodder Mart</span>
+      </button>
+      <button class="nav-pill" data-tab="pashucare" id="nav-tab-pashucare">
+        <span>🩺</span> <span class="tab-text" id="tab-pashucare-txt">PashuCare & Tele-Vet</span>
+      </button>
+      <button class="nav-pill" data-tab="logistics" id="nav-tab-logistics">
+        <span>🚚</span> <span class="tab-text" id="tab-logistics-txt">Logistics & Escrow Desk</span>
+      </button>
+      <button class="nav-pill" data-tab="schemes" id="nav-tab-schemes">
+        <span>📜</span> <span class="tab-text" id="tab-schemes-txt">Govt Subsidies & Schemes</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Live Southern Mandi & Commodity Ticker -->
+  <div class="mandi-ticker-bar">
+    <div class="ticker-label" id="lbl-ticker-badge">LIVE MANDI RATES</div>
+    <div class="ticker-marquee" id="ticker-marquee-content">
+      <!-- Injected via JavaScript -->
+    </div>
+  </div>
+
+  <!-- Hero / Regional Summary Banner -->
+  <section class="hero-banner" id="hero-banner">
+    <div class="hero-content">
+      <div class="hero-text-block">
+        <div class="state-indicator-pill" id="current-state-pill">
+          <span>📍</span> <span id="current-state-label">All 5 Southern States & 3 Union Territories</span>
+        </div>
+        <h2 class="hero-title" id="hero-title">Empowering Southern Farmers with Direct Trade & Transparent Mandis</h2>
+        <p class="hero-sub" id="hero-sub">Zero-middlemen livestock trade, certified digital pashu passports, cross-state fodder corridors, and transparent mandi intelligence.</p>
+        
+        <div class="hero-stats-row">
+          <div class="hero-stat-card">
+            <div class="stat-value" id="stat-verified-count">2,840+</div>
+            <div class="stat-title">Verified Native Animals</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-value">12 Shandies</div>
+            <div class="stat-title">Weekly Physical Markets</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-value">100% Escrow</div>
+            <div class="stat-title">PashuSafe Protected</div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="stat-value">6 Languages</div>
+            <div class="stat-title">Real-time Auto-Translate</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Floating Card -->
+      <div class="hero-action-card">
+        <h3 id="lbl-quick-tools">Smart Farmer Tools</h3>
+        <p id="lbl-quick-tools-sub">Instant AI weight estimation, gestation calendars & freight calculators</p>
+        <div class="quick-action-btn-group">
+          <button class="action-btn-secondary" id="btn-hero-open-weight">
+            <span>⚖️ <strong id="lbl-hero-ai-weight">AI Weight & Fair-Price Estimator</strong></span>
+            <span>→</span>
+          </button>
+          <button class="action-btn-secondary" id="btn-hero-open-calving">
+            <span>📅 <strong id="lbl-hero-calving">Estrus & Calving Cycle Calendar</strong></span>
+            <span>→</span>
+          </button>
+          <button class="action-btn-secondary" id="btn-hero-open-feedroi">
+            <span>🥛 <strong id="lbl-hero-feedroi">Daily Fodder & Milk Profit ROI</strong></span>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Large Dashboard Service Buttons (Touch-Friendly Quick Access) -->
+  <section class="dashboard-modules-section" id="dashboard-modules-section">
+    <div class="dashboard-modules-container">
+      <div class="dashboard-section-title">
+        <div>
+          <h3 id="lbl-dash-modules-title">Core Agricultural & Livestock Services</h3>
+          <p id="lbl-dash-modules-sub">Tap any large service button below to explore verified listings, live mandis, and smart calculators</p>
+        </div>
+        <span class="inaph-badge" id="lbl-dash-badge" style="background: rgba(16, 185, 129, 0.1); color: #047857; border-color: #a7f3d0;">
+          Direct Multi-State Integration
+        </span>
+      </div>
+
+      <div class="large-buttons-grid" id="large-buttons-grid">
+        <button class="large-dash-btn active" data-tab="bazaar" id="large-btn-bazaar">
+          <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <span>🐄</span>
+          </div>
+          <div class="large-btn-content">
+            <h4 id="btn-large-bazaar-title">Pashu & Poultry Bazaar</h4>
+            <p id="btn-large-bazaar-sub">Verified Kangayam, Ongole, Hallikar cattle & goats with digital passports</p>
+          </div>
+          <div class="large-btn-arrow">→</div>
+        </button>
+
+        <button class="large-dash-btn" data-tab="mandi" id="large-btn-mandi">
+          <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);">
+            <span>📊</span>
+          </div>
+          <div class="large-btn-content">
+            <h4 id="btn-large-mandi-title">Live Mandi & Shandy Radar</h4>
+            <p id="btn-large-mandi-sub">Real-time daily rates & weekly livestock market maps (Anthiyur, Pollachi)</p>
+          </div>
+          <div class="large-btn-arrow">→</div>
+        </button>
+
+        <button class="large-dash-btn" data-tab="vivasaya" id="large-btn-vivasaya">
+          <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #84cc16 0%, #4d7c0f 100%);">
+            <span>🌾</span>
+          </div>
+          <div class="large-btn-content">
+            <h4 id="btn-large-vivasaya-title">Vivasaya & Fodder Mart</h4>
+            <p id="btn-large-vivasaya-sub">Super Napier grass, silage bags & custom tractor/drone hire</p>
+          </div>
+          <div class="large-btn-arrow">→</div>
+        </button>
+
+        <button class="large-dash-btn" data-tab="pashucare" id="large-btn-pashucare">
+          <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+            <span>🩺</span>
+          </div>
+          <div class="large-btn-content">
+            <h4 id="btn-large-pashucare-title">PashuCare & Tele-Vet</h4>
+            <p id="btn-large-pashucare-sub">Estrus gestation calendar, feed profit ROI & AI symptom scanner</p>
+          </div>
+          <div class="large-btn-arrow">→</div>
+        </button>
+
+        <button class="large-dash-btn" data-tab="logistics" id="large-btn-logistics">
+          <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);">
+            <span>🚚</span>
+          </div>
+          <div class="large-btn-content">
+            <h4 id="btn-large-logistics-title">Logistics & Escrow Desk</h4>
+            <p id="btn-large-logistics-sub">Ventilated livestock truck booking & PashuSafe escrow payment protection</p>
+          </div>
+          <div class="large-btn-arrow">→</div>
+        </button>
+
+        <button class="large-dash-btn" data-tab="schemes" id="large-btn-schemes">
+          <div class="large-btn-icon-wrapper" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
+            <span>📜</span>
+          </div>
+          <div class="large-btn-content">
+            <h4 id="btn-large-schemes-title">Govt Subsidies & Schemes</h4>
+            <p id="btn-large-schemes-sub">Central & State Animal Husbandry grants, dairy incentives & loans</p>
+          </div>
+          <div class="large-btn-arrow">→</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Dynamic Content Workspace -->
+  <main class="main-wrapper" id="main-content">
+    <!-- Active Tab Modules are rendered here dynamically by main.js -->
+  </main>
+
+  <!-- MODAL: Digital Pashu Passport -->
+  <div class="modal-overlay" id="passport-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="lbl-passport-modal-title">Official Digital Pashu Passport (INAPH Tier-1)</h3>
+        <button class="modal-close-btn" id="close-passport-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="passport-modal-content">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: AI Weight & Fair-Price Estimator -->
+  <div class="modal-overlay" id="weight-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="lbl-weight-modal-title">AI Cattle & Goat Weight & Fair-Price Estimator</h3>
+        <button class="modal-close-btn" id="close-weight-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.84rem; color: #475569; margin-bottom: 16px;">
+          Calculated using standard <strong>Schaeffer's Body Morphology Formula</strong> validated for indigenous Indian cattle (Kangayam, Ongole, Hallikar, Punganur, Vechur).
+        </p>
+
+        <div class="input-slider-group">
+          <div class="slider-label-row">
+            <span>Heart Girth (நெஞ்சு சுற்றளவு)</span>
+            <span class="val"><span id="val-girth">168</span> cm</span>
+          </div>
+          <input type="range" min="80" max="240" value="168" class="custom-range" id="slider-girth">
+        </div>
+
+        <div class="input-slider-group">
+          <div class="slider-label-row">
+            <span>Body Length from Shoulder to Pinbone (நீளம்)</span>
+            <span class="val"><span id="val-length">138</span> cm</span>
+          </div>
+          <input type="range" min="60" max="200" value="138" class="custom-range" id="slider-length">
+        </div>
+
+        <div class="calc-output-box">
+          <div class="output-title">Estimated Live Weight & Mandi Valuation</div>
+          <div class="roi-stats-breakdown">
+            <div class="roi-stat-row">
+              <span>Estimated Live Body Weight:</span>
+              <span id="out-calc-weight">360 kg</span>
+            </div>
+            <div class="roi-stat-row">
+              <span>Current Southern Mandi Base Rate:</span>
+              <span>₹180 - ₹210 / kg live weight</span>
+            </div>
+            <div class="roi-stat-row">
+              <span>Native Breed Premium Factor:</span>
+              <span>+18% (Kangayam/Ongole High Merit)</span>
+            </div>
+          </div>
+          <div class="big-profit-highlight">
+            <div style="font-size: 0.78rem; text-transform: uppercase; color: #a7f3d0;">Suggested Fair Market Price Range:</div>
+            <div class="big-profit-val" id="out-calc-price">₹65,000 – ₹72,500</div>
+          </div>
+        </div>
+
+        <button class="btn-directions" style="margin-top: 18px;" id="btn-use-weight-in-listing">Apply to My Animal Listing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Post Animal / Produce Listing -->
+  <div class="modal-overlay" id="post-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="lbl-post-modal-title">Post New Animal or Farm Produce Listing</h3>
+        <button class="modal-close-btn" id="close-post-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="new-listing-form" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Listing Title / பெயர்</label>
+            <input type="text" id="post-title" required class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., Ongole Milking Cow with Calf" />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Native Breed / இனம்</label>
+              <select id="post-breed" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px;">
+                <option value="Kangayam">Kangayam (Tamil Nadu)</option>
+                <option value="Ongole">Ongole (Andhra Pradesh)</option>
+                <option value="Hallikar">Hallikar (Karnataka)</option>
+                <option value="Punganur">Punganur Dwarf (AP)</option>
+                <option value="Vechur">Vechur Miniature (Kerala)</option>
+                <option value="Malabari Goat">Malabari / Tellicherry Goat</option>
+                <option value="Murrah Cross">Murrah Buffalo</option>
+                <option value="Nicobari Fowl">Nicobari Indigenous Fowl (A&N)</option>
+                <option value="Green Fodder">Super Napier / Green Fodder</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Expected Price (₹)</label>
+              <input type="number" id="post-price" required class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., 65000" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">State / Territory</label>
+              <select id="post-state" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px;">
+                <option value="TN">Tamil Nadu</option>
+                <option value="AP">Andhra Pradesh</option>
+                <option value="TG">Telangana</option>
+                <option value="KA">Karnataka</option>
+                <option value="KL">Kerala</option>
+                <option value="PY">Puducherry</option>
+                <option value="AN">Andaman & Nicobar</option>
+                <option value="LD">Lakshadweep</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">District / Hub</label>
+              <input type="text" id="post-district" required class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., Erode / Guntur / Mandya" />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Daily Milk Yield (Litres / Day)</label>
+              <input type="number" step="0.5" id="post-yield" class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., 8.5" />
+            </div>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Government Ear-Tag Number</label>
+              <input type="text" id="post-tag" class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., TN-3304-9812-4410" />
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Farmer Name & Contact Number</label>
+            <input type="text" id="post-contact" required class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., Murugesan (+91 98421 00000)" />
+          </div>
+
+          <button type="submit" class="btn-directions" style="padding: 12px; font-size: 0.95rem; margin-top: 8px;">
+            Publish Verified Listing Across 8 Southern Regions
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Authentication & Account (OTP Phone Login) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="lbl-auth-modal-title">Farmer & Trader Login (OTP Verification)</h3>
+        <button class="modal-close-btn" id="close-auth-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="auth-modal-body">
+        <!-- Rendered dynamically depending on login state -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PashuSafe Escrow Checkout & Reservation -->
+  <div class="modal-overlay" id="order-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="lbl-order-modal-title">PashuSafe Escrow Checkout & Payment Protection</h3>
+        <button class="modal-close-btn" id="close-order-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="order-modal-body">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Tele-Vet & Veterinary Visit Booking -->
+  <div class="modal-overlay" id="vet-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="lbl-vet-modal-title">Register Veterinary Visit / Consultation Request</h3>
+        <button class="modal-close-btn" id="close-vet-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="vet-request-form" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Species / Animal Type</label>
+            <select id="vet-species" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px;">
+              <option value="COW">Indigenous Cow / Cattle</option>
+              <option value="BUFFALO">Murrah / Native Buffalo</option>
+              <option value="GOAT">Goat (Malabari / Tellicherry / Boer)</option>
+              <option value="SHEEP">Sheep (Mecheri / Nilgiri)</option>
+              <option value="POULTRY">Indigenous Poultry / Backyard Fowl</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Observed Symptoms & Medical History</label>
+            <textarea id="vet-symptoms" required rows="3" class="search-input" style="border-radius: 8px; margin-top: 4px; resize: vertical;" placeholder="Describe symptoms, duration, temperature, feed intake changes..."></textarea>
+          </div>
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 12px; border-radius: 8px; font-size: 0.78rem; color: #166534;">
+            🛡️ Your consultation ticket is logged into the Southern State Animal Husbandry Emergency Coordination Desk.
+          </div>
+          <button type="submit" class="btn-directions" style="padding: 12px; font-size: 0.95rem;">
+            Submit Emergency Ticket & Connect Vet
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Revealed Seller Contact -->
+  <div class="modal-overlay" id="contact-modal">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3>Verified Breeder & Farmer Contact</h3>
+        <button class="modal-close-btn" id="close-contact-modal">&times;</button>
+      </div>
+      <div class="modal-body" id="contact-modal-body" style="text-align: center; padding: 20px;">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Set Mandi Price Alert -->
+  <div class="modal-overlay" id="alert-modal">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3>Subscribe to Daily Mandi Price Alerts</h3>
+        <button class="modal-close-btn" id="close-alert-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="mandi-alert-form" style="display: flex; flex-direction: column; gap: 14px;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Commodity</label>
+            <input type="text" id="alert-commodity" required class="search-input" style="border-radius: 8px; margin-top: 4px;" readonly />
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Market / Shandy (Optional)</label>
+            <input type="text" id="alert-market" class="search-input" style="border-radius: 8px; margin-top: 4px;" placeholder="e.g., Anthiyur or Any Market" />
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 700; color: #042417;">Alert Channel</label>
+            <select id="alert-channel" class="custom-select" style="width: 100%; color: #042417; background: #f1f5f2; border: 1px solid #cbd5e1; padding: 10px; margin-top: 4px;">
+              <option value="SMS">SMS Direct Message</option>
+              <option value="WHATSAPP">WhatsApp Messenger</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-directions" style="padding: 12px;">
+            Activate Daily Price Alert
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast-notice" id="toast-notice">
+    <span id="toast-icon">✓</span>
+    <span id="toast-msg">Operation completed successfully.</span>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+          <span style="font-size: 1.5rem;">🌾</span>
+          <h4 style="margin: 0; font-size: 1.2rem; color: #6ee7b7;">DakshinAgriHub</h4>
+        </div>
+        <p style="color: #94a3b8; font-size: 0.84rem; margin-bottom: 14px;">
+          The unified digital marketplace uniting livestock farmers, crop producers, weekly shandies, and tele-veterinarians across Southern India's 5 states and 3 Union Territories.
+        </p>
+        <span class="inaph-badge">Aligned with National Digital Livestock Mission (NDLM)</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Covered States & UTs</h4>
+        <ul>
+          <li><a href="#" data-set-state="TN">Tamil Nadu (தமிழ்நாடு)</a></li>
+          <li><a href="#" data-set-state="AP">Andhra Pradesh (ఆంధ్రప్రదేశ్)</a></li>
+          <li><a href="#" data-set-state="TG">Telangana (తెలంగాణ)</a></li>
+          <li><a href="#" data-set-state="KA">Karnataka (ಕರ್ನಾಟಕ)</a></li>
+          <li><a href="#" data-set-state="KL">Kerala (കേരളം)</a></li>
+          <li><a href="#" data-set-state="PY">Puducherry (புதுச்சேரி)</a></li>
+          <li><a href="#" data-set-state="AN">Andaman & Nicobar (அந்தமான்)</a></li>
+          <li><a href="#" data-set-state="LD">Lakshadweep (ലക്ഷദ്വീപ്)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Core Modules</h4>
+        <ul>
+          <li><a href="#" data-set-tab="bazaar">Pashu & Poultry Bazaar</a></li>
+          <li><a href="#" data-set-tab="mandi">Southern Mandi Ticker</a></li>
+          <li><a href="#" data-set-tab="vivasaya">Fodder & Silage Corridor</a></li>
+          <li><a href="#" data-set-tab="pashucare">Tele-Vet & Gestation</a></li>
+          <li><a href="#" data-set-tab="logistics">PashuSafe Escrow Protection</a></li>
+          <li><a href="#" data-set-tab="schemes">Subsidies Directory</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Vayal Voice & Helpline</h4>
+        <p style="color: #94a3b8; font-size: 0.82rem; margin-bottom: 8px;">
+          Toll-Free Southern Farmer Multilingual Advisory:
+        </p>
+        <div style="font-size: 1.1rem; font-weight: 800; color: #fef08a; margin-bottom: 12px;">
+          1800-425-SOUTH (76884)
+        </div>
+        <p style="color: #64748b; font-size: 0.76rem;">
+          Supported in Tamil, Telugu, Kannada, Malayalam, Hindi & English. Real-time translation powered by Indic AI.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 DakshinAgriHub. All rights reserved. Built for Southern India Agri-Livestock Community.</div>
+      <div>Zero Brokerage • Biometric Ear-Tag Verified • Animal Welfare Board Compliant Transport</div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
